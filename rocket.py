@@ -1,10 +1,25 @@
-# SINCE THE FILE IS OPEN ALL THE TIME, FUNCTIONS DO NOT WORK IN COMBINATION...
-# EITHER DEAL WITH THE FILE BEING OPEN ALL THE TIME BY USING 'open with' OR REWRITE THE CODE!!!
-
 class Rocket:
     def __init__(self, tasks_file):
         self.file = open(tasks_file, 'r+')
         self.tasks = self.file.readlines()
+
+    def __getitem__(self, idx):
+        for i in range(len(self.tasks)):
+            if i == idx:
+                return self.tasks[i]
+
+    def __len__(self):
+        return len(self.tasks)
+
+    def __iter__(self):
+        for i in range(len(self.tasks)):
+            yield self.tasks[i]
+    
+    def __str__(self):
+        res = ""
+        for i in range(len(self.tasks)):
+            res += str(i+1) + '. ' + self.tasks[i]
+        return res
 
     def add_task(self, new_task=""):
         new_task += '\n'
@@ -16,6 +31,7 @@ class Rocket:
 
         for task in temp:
             self.file.write(task)
+            self.tasks.append(task)
 
     def remove_task(self, idx):
         if idx > len(self.tasks):
@@ -25,35 +41,90 @@ class Rocket:
             print("Your task index cannot be less than 1")
             return
 
+        temp = self.tasks[:idx-1] + self.tasks[idx:]
+
         self.clear()
 
-        self.tasks = self.tasks[:idx-1] + self.tasks[idx:]
-
-        for i in range(len(self.tasks)):
-            self.file.write(self.tasks[i])
+        for task in temp:
+            self.file.write(task)
+            self.tasks.append(task)
 
     def update_task(self, idx, updated_task):
         updated_task += '\n'
         temp = self.tasks
+
         self.clear()
 
         for i in range(len(temp)):
             if i+1 == idx:
                 self.file.write(updated_task)
+                self.tasks.append(updated_task)
             else:
                 self.file.write(temp[i])
+                self.tasks.append(temp[i])
+
+    def info(self):
+        print("Rocket by David Oniani")
+        print("Licensed under MIT")
+        print("Copyright (c) 2018 David Oniani")
+        print("Type 'help' for more information")
+    
+    def help(self):
+        print("Rocket is the terminal app which helps you orginize your daily tasks")
+        print("--------------------------------------------------------------------")
+        print("Type 'show' to show all the tasks")
+        print("You can add task by typing 'add' after which you can enter the new task on the prompted line")
+        print("You can remove task by typing 'rem n' where n is the number of the task")
+        print("Type 'stop' to stop running the program")
+
 
     def clear(self):
         self.file.truncate(0) # Remove everything from a file
         self.file.seek(0) # Set the pointer to the beginning so that the file is read from up to down (not necessary)
         self.tasks = list()
-    
+
     def close(self):
         self.file.close()
 
-tasks = Rocket("tasks.txt")
-# tasks.remove_task(1)
-# tasks.add_task("Hello, world!")
-tasks.update_task(1, "Do NOT do dishes!")
-# tasks.close()
-# tasks.remove_task(1)
+def main():
+    rocket = Rocket("tasks.txt")
+    rocket.info()
+    run = True
+
+    print()
+
+    while run:
+        cmd = input()
+
+        if cmd == "help":
+            print()
+            rocket.help()
+            print()
+
+        elif cmd == "show":
+            print()
+            print("--------------------------------------------")
+            print(rocket)
+
+        elif cmd == "add":
+            new_task = input("Write your new task: ")
+            rocket.add_task(new_task)
+            print()
+            print(rocket)
+        
+        elif cmd == "rm":
+            remove_line = input("Enter the number of the task you want to remove: ")
+            rocket.remove_task(int(remove_line))
+            print()
+            print(rocket)
+        
+        elif cmd == "stop":
+            rocket.close()
+            run = False
+    
+    print("\nThe program has stopped running")
+    
+    return True
+
+if __name__ == "__main__":
+    main()
