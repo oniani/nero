@@ -1,6 +1,6 @@
 class Deadline:
-    def __init__(self, tasks_file):
-        self.file = open(tasks_file, 'r+')
+    def __init__(self):
+        self.open()
         self.tasks = self.file.readlines()
 
     def __getitem__(self, idx):
@@ -78,6 +78,8 @@ class Deadline:
         print("You can remove task by typing 'rem n' where n is the number of the task")
         print("Type 'stop' to stop running the program")
 
+    def open(self, tasks_file="tasks.txt"):
+        self.file = open(tasks_file, 'r+')
 
     def clear(self):
         self.file.truncate(0) # Remove everything from a file
@@ -88,13 +90,14 @@ class Deadline:
         self.file.close()
 
 def main():
-    deadline = Deadline("tasks.txt")
+    deadline = Deadline()
     deadline.info()
     run = True
 
     print()
-
+    
     while run:
+        deadline.open()
         cmd = input()
 
         if cmd == "help":
@@ -122,6 +125,8 @@ def main():
         elif cmd == "stop":
             deadline.close()
             run = False
+        
+        deadline.close()
     
     print("\nThe program has stopped running")
     
