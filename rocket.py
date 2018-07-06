@@ -1,4 +1,4 @@
-class Rocket:
+class Deadline:
     def __init__(self, tasks_file):
         self.file = open(tasks_file, 'r+')
         self.tasks = self.file.readlines()
@@ -63,14 +63,15 @@ class Rocket:
                 self.file.write(temp[i])
                 self.tasks.append(temp[i])
 
+
     def info(self):
-        print("Rocket by David Oniani")
+        print("Deadline by David Oniani")
         print("Licensed under MIT")
         print("Copyright (c) 2018 David Oniani")
         print("Type 'help' for more information")
     
     def help(self):
-        print("Rocket is the terminal app which helps you orginize your daily tasks")
+        print("Deadline is the terminal app which helps you orginize your daily tasks")
         print("--------------------------------------------------------------------")
         print("Type 'show' to show all the tasks")
         print("You can add task by typing 'add' after which you can enter the new task on the prompted line")
@@ -87,8 +88,8 @@ class Rocket:
         self.file.close()
 
 def main():
-    rocket = Rocket("tasks.txt")
-    rocket.info()
+    deadline = Deadline("tasks.txt")
+    deadline.info()
     run = True
 
     print()
@@ -98,28 +99,28 @@ def main():
 
         if cmd == "help":
             print()
-            rocket.help()
+            deadline.help()
             print()
 
         elif cmd == "show":
             print()
             print("--------------------------------------------")
-            print(rocket)
+            print(deadline)
 
         elif cmd == "add":
             new_task = input("Write your new task: ")
-            rocket.add_task(new_task)
+            deadline.add_task(new_task)
             print()
-            print(rocket)
+            print(deadline)
         
         elif cmd == "rm":
             remove_line = input("Enter the number of the task you want to remove: ")
-            rocket.remove_task(int(remove_line))
+            deadline.remove_task(int(remove_line))
             print()
-            print(rocket)
+            print(deadline)
         
         elif cmd == "stop":
-            rocket.close()
+            deadline.close()
             run = False
     
     print("\nThe program has stopped running")
