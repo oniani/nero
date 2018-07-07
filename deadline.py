@@ -1,6 +1,8 @@
+import os
+
 class Deadline:
-    def __init__(self):
-        self.open()
+    def __init__(self, file):
+        self.file = open(file, 'r+')
         self.tasks = self.file.readlines()
 
     def __getitem__(self, idx):
@@ -17,8 +19,18 @@ class Deadline:
     
     def __str__(self):
         res = ""
+
+        '''
+        Modifications has to be made to '__str__' method in order to format the output
+        '''
+        # res += "Task"
+        # res += 2 * len(max(self.tasks, key=len)) * ' '
+        # res += "Deadline\n"
+        # res += 3 * len(max(self.tasks, key=len)) * '-'
+
         for i in range(len(self.tasks)):
             res += str(i+1) + '. ' + self.tasks[i]
+
         return res
 
     def add_task(self, new_task=""):
@@ -49,37 +61,10 @@ class Deadline:
             self.file.write(task)
             self.tasks.append(task)
 
-    def update_task(self, idx, updated_task):
-        updated_task += '\n'
-        temp = self.tasks
-
-        self.clear()
-
-        for i in range(len(temp)):
-            if i+1 == idx:
-                self.file.write(updated_task)
-                self.tasks.append(updated_task)
-            else:
-                self.file.write(temp[i])
-                self.tasks.append(temp[i])
 
 
-    def info(self):
-        print("Deadline by David Oniani")
-        print("Licensed under MIT")
-        print("Copyright (c) 2018 David Oniani")
-        print("Type 'help' for more information")
-    
-    def help(self):
-        print("Deadline is the terminal app which helps you orginize your daily tasks")
-        print("--------------------------------------------------------------------")
-        print("Type 'show' to show all the tasks")
-        print("You can add task by typing 'add' after which you can enter the new task on the prompted line")
-        print("You can remove task by typing 'rem n' where n is the number of the task")
-        print("Type 'stop' to stop running the program")
-
-    def open(self, tasks_file="tasks.txt"):
-        self.file = open(tasks_file, 'r+')
+    def open(self, file):
+        self.file = open(file, 'r+')
 
     def clear(self):
         self.file.truncate(0) # Remove everything from a file
@@ -89,46 +74,79 @@ class Deadline:
     def close(self):
         self.file.close()
 
-def main():
-    deadline = Deadline()
-    deadline.info()
-    run = True
+    class Interaction:
+        def print_n_chars(self, char, n):
+            for i in range(n):
+                print(char, end=' ')
 
-    print()
+        def info(self):
+            print("Deadline by David Oniani")
+            print("Licensed under MIT")
+            print("Copyright (c) 2018 David Oniani")
+            print("Type 'help' or 'license' for more information")
+        
+        def help(self):
+            print("Deadline is the terminal app which helps you orginize your daily tasks")
+            print("Type 'show' to show all the tasks")
+            print("You can add task by typing 'add' after which you can enter the new task on the prompted line")
+            print("You can remove task by typing 'rem n' where n is the number of the task")
+            print("Type 'stop' to stop running the application")
+        
+        def license(self, file):
+            self.file = open(file, 'r')
+
+            for line in self.file.readlines():
+                print(line, end='')
+        
+    class Terminal:
+        def clear(self):
+            if os.name == 'nt':
+                os.system('cls')
+            else:
+                os.system('clear')
+
+
+def main():
+    file = "tasks.txt"
+    deadline = Deadline(file)
+    deadline.Interaction().info()
+
+    run = True
     
     while run:
-        deadline.open()
         cmd = input()
+        deadline.open(file)
 
         if cmd == "help":
-            print()
-            deadline.help()
-            print()
-
+            deadline.Terminal().clear()
+            deadline.Interaction().help()
+        
+        elif cmd == "license":
+            deadline.Terminal().clear()
+            deadline.Interaction().license("LICENSE")
+        
         elif cmd == "show":
-            print()
-            print("--------------------------------------------")
+            deadline.Terminal().clear()
             print(deadline)
 
         elif cmd == "add":
             new_task = input("Write your new task: ")
             deadline.add_task(new_task)
-            print()
+            deadline.Terminal().clear()
             print(deadline)
         
         elif cmd == "rm":
             remove_line = input("Enter the number of the task you want to remove: ")
             deadline.remove_task(int(remove_line))
-            print()
+            deadline.Terminal().clear()
             print(deadline)
         
         elif cmd == "stop":
-            deadline.close()
             run = False
         
         deadline.close()
     
-    print("\nThe program has stopped running")
+    print("\nThe application has stopped running")
     
     return True
 
