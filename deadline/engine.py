@@ -1,4 +1,4 @@
-class Deadline:
+class Task:
     def __init__(self, file):
         self.file = open(file, 'r+')
         self.tasks = self.file.readlines()
@@ -17,14 +17,10 @@ class Deadline:
     
     def __str__(self):
         res = ""
+        max_tsk_len = len(max(self.tasks, key=len))
 
-        '''
-        Modifications has to be made to '__str__' method in order to format the output
-        '''
-        # res += "Task"
-        # res += 2 * len(max(self.tasks, key=len)) * ' '
-        # res += "Deadline\n"
-        # res += 3 * len(max(self.tasks, key=len)) * '-'
+        res += "Task" + 3 * max_tsk_len * ' ' + "Deadline"
+        res += "\n" + (3 * max_tsk_len + 12) * '-' + '\n'
 
         for i in range(len(self.tasks)):
             res += str(i+1) + '. ' + self.tasks[i]
@@ -44,13 +40,6 @@ class Deadline:
             self.tasks.append(task)
 
     def remove_task(self, idx):
-        if idx > len(self.tasks):
-            print("Your task index cannot be greater than the number of tasks")
-            return
-        elif idx < 1:
-            print("Your task index cannot be less than 1")
-            return
-
         temp = self.tasks[:idx-1] + self.tasks[idx:]
 
         self.clear()
@@ -63,8 +52,8 @@ class Deadline:
         self.file = open(file, 'r+')
 
     def clear(self):
-        self.file.truncate(0) # Remove everything from a file
-        self.file.seek(0) # Set the pointer to the beginning so that the file is read from up to down (not necessary)
+        self.file.truncate(0)
+        self.file.seek(0)
         self.tasks = list()
 
     def close(self):

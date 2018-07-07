@@ -1,4 +1,6 @@
-class Interactions:
+import os
+
+class Information:
     def info(self):
         print("Deadline by David Oniani")
         print("Licensed under MIT")
@@ -25,7 +27,7 @@ class InteractiveHelp:
             print("Did you mean 'cmd' ?")
         
         elif cmd == 'ad' or cmd == 'addd' or cmd == 'da' or cmd == 'd' or cmd == 'dd':
-            print("Did you mean 'cmd' ?")
+            print("Did you mean 'add' ?")
         
         elif cmd == 'sto' or cmd == 'stopp' or cmd == 'stoop' or cmd == 'stp' or cmd == 'st':
             print("Did you mean 'stop' ?")
@@ -37,3 +39,32 @@ class InteractiveHelp:
             print("Sorry, I have nothing to offer for this request...")
             print("... but blood, boil, tears, and sweat.")
             print("Fortunately, there is a 'help' command which is a full manual for the app!")
+    
+    def remove_helper(self, task, idx):
+        while idx > len(task) or idx < 1 or int(idx) != 'int':
+            if idx > len(task):
+                print("Your task index cannot be greater than the number of tasks")
+            elif idx < 1:
+                print("Your task index cannot be less than 1")
+
+            try:
+                idx = int(input("Please, re-enter your task index: "))
+            except:
+                print("The task index should be a positive integer")
+
+class Function:
+    def wn_clear(self):
+        if os.name == 'nt':
+            os.system('cls')
+        else:
+            os.system('clear')
+    
+    # Finish up the type check for the input
+    # If user enters 'int' and 'string' is required, python quits...
+    # Either exceptions or while loop...
+    def type_check(self, n):
+        while type(n) != 'int':
+            prompt = input("The p")
+
+# class Colorize:
+    # def warning_decoration(self):

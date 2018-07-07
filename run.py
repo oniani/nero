@@ -1,51 +1,54 @@
-from deadline.deadline import Deadline
-from deadline.interaction import Interactions, InteractiveHelp
-from deadline.terminal import Functions
+from deadline.engine import Task
+from deadline.interactions import Information, InteractiveHelp, Function
 
 def main():
     file = 'data/tasks.txt'
-    deadline = Deadline(file)
-    Interactions().info()
+    task = Task(file)
+    Information().info()
 
     run = True
     
     while run:
         cmd = input()
-        deadline.open(file)
+        task.open(file)
 
         if cmd == 'help':
-            Functions().wn_clear()
+            Function().wn_clear()
             InteractiveHelp().help()
         
         elif cmd == 'license':
-            Functions().wn_clear()
-            Interactions().license('../LICENSE')
+            Function().wn_clear()
+            Information().license('LICENSE')
         
         elif cmd == 'show':
-            Functions().wn_clear()
-            print(deadline)
+            Function().wn_clear()
+            print(task)
 
         elif cmd == 'add':
             new_task = input("Write your new task: ")
-            deadline.add_task(new_task)
-            Functions().wn_clear()
-            print(deadline)
+            task.add_task(new_task)
+            Function().wn_clear()
+            print(task)
         
         elif cmd == 'rm':
-            remove_line = input("Enter the index of the task you want to remove: ")
-            deadline.remove_task(int(remove_line))
-            Functions().wn_clear()
-            print(deadline)
+            task_idx = int(input("Enter the index of the task you want to remove: "))
+            InteractiveHelp().remove_helper(task, task_idx)
+            task.remove_task(task_idx)
+            Function().wn_clear()
+            print(task)
         
         elif cmd == 'clear':
-            Functions().wn_clear()
+            Function().wn_clear()
 
         elif cmd == 'stop':
             run = False
         
-        deadline.close()
+        else:
+            InteractiveHelp().give_hint_by_cmd(cmd);
+        
+        task.close()
     
-    print("\nThe application has stopped running")
+    print("The application has stopped running")
     
     return True
 
