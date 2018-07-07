@@ -20,19 +20,20 @@ def main():
             Function().wn_clear()
             Information().license('LICENSE')
         
-        elif cmd == 'show':
+        elif cmd == 'lst':
             Function().wn_clear()
             print(task)
 
         elif cmd == 'add':
-            new_task = input("Write your new task: ")
-            task.add_task(new_task)
+            title = input("Write your task title: ")
+            deadline = input("Write your task deadline: ")
+            task.add_task(title, deadline)
             Function().wn_clear()
             print(task)
         
-        elif cmd == 'rm':
+        elif cmd == 'rem':
             task_idx = int(input("Enter the index of the task you want to remove: "))
-            InteractiveHelp().remove_helper(task, task_idx)
+            # InteractiveHelp().remove_helper(task, task_idx)
             task.remove_task(task_idx)
             Function().wn_clear()
             print(task)

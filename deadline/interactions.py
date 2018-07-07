@@ -14,20 +14,20 @@ class Information:
 
 class InteractiveHelp:
     def help(self):
-        print("'show' - display all the tasks")
+        print("'lst' - display all the tasks")
         print("'add' - add task")
         print("'rem' - remove task by its index")
         print("'stop' - stop running the application and save my edits")
     
     def give_hint_by_cmd(self, cmd):
-        if cmd == 'r' or cmd == 'mr' or cmd == 'm' or cmd == 'rmm' or cmd == 'rrm':
-            print("Did you mean 'rm' ?")
-    
-        elif cmd == 'ad' or cmd == 'addd' or cmd == 'da' or cmd == 'd' or cmd == 'dd':
-            print("Did you mean 'cmd' ?")
-        
+        if cmd == 'ls' or cmd == 'lstt' or cmd == 'l' or cmd == 'lss' or cmd == 'lstt':
+            print("Did you mean 'lst' ?")
+
         elif cmd == 'ad' or cmd == 'addd' or cmd == 'da' or cmd == 'd' or cmd == 'dd':
             print("Did you mean 'add' ?")
+
+        elif cmd == 're' or cmd == 'mre' or cmd == 'r' or cmd == 'remm' or cmd == 'rrem':
+            print("Did you mean 'rem' ?")
         
         elif cmd == 'sto' or cmd == 'stopp' or cmd == 'stoop' or cmd == 'stp' or cmd == 'st':
             print("Did you mean 'stop' ?")

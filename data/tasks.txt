@@ -1,5 +1,2 @@
-Do the dishes
-Have enough sleep
-Have enough sleep
-Have enough sleep
-Have enough sleep
+Zeroth task|00/00/2018
+First task|01/01/2018
