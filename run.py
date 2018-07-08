@@ -25,7 +25,7 @@ def main():
             print(tasks)
 
         elif cmd == 'add':
-            title = input(green("Write your task title: "))
+            title = input(blue("Write your task title: "))
             deadline = input(blue("Write your task deadline: "))
             tasks.add_task(title, deadline)
             Function.wn_clear()
@@ -52,14 +52,12 @@ def main():
 
         elif cmd == 'stop':
             run = False
+            print(cyan("The application has stopped running"))
 
         Function.historize(cmd, 'data/history.txt')
+        Function.clear_session_history('data/history.txt')
         tasks.close()
     
-    print(cyan("The application has stopped running"))
-
-    Function.clear_session_history(cmd, 'data/history.txt')
-
     return True
 
 if __name__ == "__main__":

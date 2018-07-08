@@ -67,5 +67,5 @@ class Function:
     
     def clear_session_history(file):
         file = open(file, 'w')
-        self.file.truncate(0)
-        self.file.seek(0)
+        file.truncate(0)
+        file.seek(0)
