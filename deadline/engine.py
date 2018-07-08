@@ -1,4 +1,4 @@
-class Task:
+class Core:
     def __init__(self, file):
         self.file = open(file, 'r+')
         self.tasks = list(line.split('|') for line in self.file)
@@ -11,7 +11,7 @@ class Task:
                 return self.titles[i]
 
     def __len__(self):
-        return len(self.tasks)
+        return len(self.titles)
 
     def __iter__(self):
         for i in range(len(self.titles)):
@@ -57,7 +57,7 @@ class Task:
             
         self.clear()
 
-        for i in range(len(temp_titles)-1):
+        for i in range(len(temp_titles)):
             self.file.write(temp_titles[i] + '|' + temp_deadlines[i])
             self.titles.append(temp_titles[i])
             self.deadlines.append(temp_deadlines[i])
