@@ -1,1 +1,1 @@
-__all__ = ['engine', 'interactions']
+__all__ = ['engine', 'interactions', 'colorize']
