@@ -20,7 +20,7 @@ def main():
             Function.wn_clear()
             Information.license('LICENSE')
         
-        elif cmd == 'l':
+        elif cmd == 'ls':
             Function.wn_clear()
             print(tasks)
 
@@ -53,6 +53,9 @@ def main():
         elif cmd == 'stop':
             run = False
             print(cyan("The application has stopped running"))
+
+        else:
+            InteractiveHelp.give_hint_by_cmd(cmd)
 
         Function.historize(cmd, 'data/history.txt')
         Function.clear_session_history('data/history.txt')

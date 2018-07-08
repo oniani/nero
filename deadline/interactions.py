@@ -1,11 +1,12 @@
 import os
+from deadline.colorize import red
 
 class Information:
     def info():
         print("Deadline by David Oniani")
         print("Licensed under MIT")
         print("Copyright (c) 2018 David Oniani")
-        print("Type 'help' or 'license' for more information")
+        print("Type 'help' or 'license' for more information.\n")
     
     def license(file):
         file = open(file, 'r')
@@ -22,8 +23,10 @@ class InteractiveHelp:
         print("'ls' - display all the tasks")
         print("'add' - add task")
         print("'rm' - remove task by its index")
+        print("'h' - show all the commands you used in the current session")
+        print("'clear' - clear the window")
         print("'stop' - stop running the application and save my edits")
-    
+
     def give_hint_by_cmd(cmd):
         if cmd == 'l' or cmd == 'ls' or cmd == 'Ls' or cmd == 'lS' or cmd == 's':
             print("Did you mean 'ls' ?")
@@ -37,22 +40,20 @@ class InteractiveHelp:
         elif cmd == 'sto' or cmd == 'stopp' or cmd == 'stoop' or cmd == 'stp' or cmd == 'st':
             print("Did you mean 'stop' ?")
         
-        elif cmd == 'cle' or cmd == 'clearr' or cmd == 'cllar' or cmd == 'cller' or cmd == 'lear':
+        elif cmd == 'cle' or cmd == 'clearr' or cmd == 'cllar' or cmd == 'cllear' or cmd == 'lear':
             print("Did you mean 'clear' ?")
         
         else:
-            print("Sorry, I have nothing to offer for this request...")
-            print("... but blood, boil, tears, and sweat.")
-            print("Fortunately, there is a 'help' command which is a full manual for the app!")
+            print(red("Sorry, this is an invalid command. Type 'help' for more information"))
     
     def rm_helper(task, idx):
         while idx > len(task):
-            print("Your task index cannot be greater than the number of tasks")
+            print(red("Your task index cannot be greater than the number of tasks"))
             idx = int(input("Please, re-enter your task index: "))
 
         while idx < 1:
-            print("Your task index cannot be less than 1")
-            idx = int(input("Please, re-enter your task index: "))
+            print(red("Your task index cannot be less than 1"))
+            idx = int(input(red("Please, re-enter your task index: ")))
 
 class Function:
     def wn_clear():
