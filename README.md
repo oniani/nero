@@ -25,15 +25,14 @@ Once **Deadline** is set up, type `deadline` in the **terminal** and the app wil
 Here is the list of its functionalities:
 * `help` - shows a manual for the commands
 * `license` - shows the license for the app
-* `ls` - display all the tasks
-* `ls --title` - list the tasks only
-* `ls --dl` - list the deadlines only
+* `ls` - list all tasks
+* `ls --ttl` - list titles only
+* `ls --ddl` - list deadlines only
 * `add` - add task
-* `rm` - remove task by its index or the name (if there are  multiple tasks with the same name, you will also be asked for the index)
-* `h` - show all the commands you used in the current session
-* `clear` - clear the window
-* `stop` - stop running the application and save my edits
-* `encrypt` - enable optional encryption of the tasks
+* `rm` - remove task by its index
+* `h` - show command history for the current session
+* `clear` - clear the terminal window
+* `stop` - stop running the app and save my edits
 
 ## How does it work?
 

@@ -9,7 +9,7 @@ class Core:
         for i in range(len(self.titles)):
             if i == idx:
                 return self.titles[i]
-
+    
     def __len__(self):
         return len(self.titles)
 
@@ -28,6 +28,9 @@ class Core:
             res += self.deadlines[i].rjust(max_tsk_len - len(self.titles[i]) + 28, ' ')
         
         return res
+
+    def get_deadlines(self):
+        return self.deadlines
 
     def add_task(self, title, deadline):
         deadline += '\n'

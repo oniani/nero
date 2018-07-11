@@ -6,6 +6,7 @@ def main():
     tasks = Core('data/tasks.txt')
     Information.info()
     
+    history = []
     run = True
     
     while run:
@@ -22,33 +23,47 @@ def main():
         
         elif cmd == 'ls':
             Function.wn_clear()
-            print(tasks)
+            print(tasks, end='')
+
+        elif cmd == 'ls --ttl':
+            Function.wn_clear()
+            for item in tasks:
+                print(item)
+
+        elif cmd == 'ls --ddl':
+            Function.wn_clear()
+            for item in tasks.get_deadlines():
+                print(item, end='')
 
         elif cmd == 'add':
             title = input(blue("Write your task title: "))
             deadline = input(blue("Write your task deadline: "))
             tasks.add_task(title, deadline)
             Function.wn_clear()
-            print(tasks)
+            print(tasks, end='')
         
         elif cmd == 'rm':
             idx = input(red("Enter the index of the task you want to remove: "))
             
-            while not idx.isdigit():
-                print(red("The task index is a positive integer"))
+            while not idx.isdigit() or int(idx) < 1 or int(idx) > len(tasks):
+                print(red("Task index is a positive integer which is more than 1 and less than the number of tasks!"))
                 idx = input(red("Please, re-enter your task index: "))
-            
+
             idx = int(idx)
-            InteractiveHelp.rm_helper(tasks, idx)
             tasks.remove_task(idx)
             Function.wn_clear()
-            print(tasks)
+            print(tasks, end='')
         
         elif cmd == 'clear':
             Function.wn_clear()
 
-        elif cmd == 'history':
-            Information.history('data/history.txt')
+        elif cmd == 'h':
+            Function.wn_clear()
+            for i in range(len(history)):
+                if i != len(history) - 1:
+                    print(history[i], end=', ')
+                else:
+                    print(history[i])
 
         elif cmd == 'stop':
             run = False
@@ -57,10 +72,11 @@ def main():
         else:
             InteractiveHelp.give_hint_by_cmd(cmd)
 
-        Function.historize(cmd, 'data/history.txt')
-        Function.clear_session_history('data/history.txt')
+        history.append(cmd)
         tasks.close()
     
+    history.clear()
+
     return True
 
 if __name__ == "__main__":

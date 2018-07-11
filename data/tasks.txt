@@ -1,10 +1,8 @@
+First task|01/01/2018
 Second task|02/02/2018
 Third task|03/03/2018
 Fourth task|04/04/2018
 Fifth task|05/05/2018
 Sixth task|06/06/2018
 Seventh task|07/07/2018
-Eight task|08/08/2018
 Ninth task|09/09/2018
-Tenth task|10/10/2018
-Eleventh task|11/11/2018

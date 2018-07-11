@@ -6,7 +6,7 @@ class Information:
         print("Deadline by David Oniani")
         print("Licensed under MIT")
         print("Copyright (c) 2018 David Oniani")
-        print("Type 'help' or 'license' for more information.\n")
+        print("Type 'help' or 'license' for more information.")
     
     def license(file):
         file = open(file, 'r')
@@ -20,15 +20,16 @@ class Information:
 
 class InteractiveHelp:
     def help():
-        print("'ls' - display all the tasks")
-        print("'add' - add task")
+        print("'ls' - list all tasks")
+        print("'ls --ttl' - list titles only")
+        print("'add' - list deadlines only")
         print("'rm' - remove task by its index")
-        print("'h' - show all the commands you used in the current session")
-        print("'clear' - clear the window")
-        print("'stop' - stop running the application and save my edits")
+        print("'h' - show command history for the current session")
+        print("'clear' - clear the terminal window")
+        print("'stop' - stop running the app and save my edits")
 
     def give_hint_by_cmd(cmd):
-        if cmd == 'l' or cmd == 'ls' or cmd == 'Ls' or cmd == 'lS' or cmd == 's':
+        if cmd == 'l' or cmd == 's' or cmd == 'Ls' or cmd == 'lS' or cmd == 'lss' or cmd == 'lls':
             print("Did you mean 'ls' ?")
 
         elif cmd == 'ad' or cmd == 'addd' or cmd == 'da' or cmd == 'd' or cmd == 'dd':
@@ -45,15 +46,6 @@ class InteractiveHelp:
         
         else:
             print(red("Sorry, this is an invalid command. Type 'help' for more information"))
-    
-    def rm_helper(task, idx):
-        while idx > len(task):
-            print(red("Your task index cannot be greater than the number of tasks"))
-            idx = int(input("Please, re-enter your task index: "))
-
-        while idx < 1:
-            print(red("Your task index cannot be less than 1"))
-            idx = int(input(red("Please, re-enter your task index: ")))
 
 class Function:
     def wn_clear():
@@ -61,12 +53,3 @@ class Function:
             os.system('cls')
         else:
             os.system('clear')
-    
-    def historize(cmd, file):
-        file = open(file, 'w')
-        file.write(cmd)
-    
-    def clear_session_history(file):
-        file = open(file, 'w')
-        file.truncate(0)
-        file.seek(0)
