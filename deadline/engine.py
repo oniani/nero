@@ -1,9 +1,9 @@
 class Core:
     def __init__(self, file):
         self.file = open(file, 'r+')
-        self.tasks = list(line.split('|') for line in self.file)
-        self.titles = list(task[0] for task in (self.tasks))
-        self.deadlines = list(task[1] for task in (self.tasks))
+        self.tasks = [line.split(',') for line in self.file]
+        self.titles = [task[0] for task in (self.tasks)]
+        self.deadlines = [task[1] for task in (self.tasks)]
 
     def __getitem__(self, idx):
         for i in range(len(self.titles)):
@@ -40,13 +40,13 @@ class Core:
 
         self.clear()
 
-        self.file.write(title + '|' + deadline)
+        self.file.write(title + ',' + deadline)
 
         self.titles.append(title)
         self.deadlines.append(deadline)
 
         for i in range(len(temp_titles)):
-            self.file.write(temp_titles[i] + '|' + temp_deadlines[i])
+            self.file.write(temp_titles[i] + ',' + temp_deadlines[i])
             self.titles.append(temp_titles[i])
             self.deadlines.append(temp_deadlines[i])
 
@@ -61,7 +61,7 @@ class Core:
         self.clear()
 
         for i in range(len(temp_titles)):
-            self.file.write(temp_titles[i] + '|' + temp_deadlines[i])
+            self.file.write(temp_titles[i] + ',' + temp_deadlines[i])
             self.titles.append(temp_titles[i])
             self.deadlines.append(temp_deadlines[i])
 
@@ -71,9 +71,9 @@ class Core:
     def clear(self):
         self.file.truncate(0)
         self.file.seek(0)
-        self.tasks = list()
-        self.titles = list()
-        self.deadlines = list()
+        self.tasks = []
+        self.titles = []
+        self.deadlines = []
 
     def close(self):
         self.file.close()
