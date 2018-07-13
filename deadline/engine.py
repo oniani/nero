@@ -1,18 +1,20 @@
+from os import path
+
 class Core:
-    def __init__(self, file):
+    def __init__(self, file=path.join('.', 'data', 'tasks.txt')):
         self.file = open(file, 'r+')
         self.tasks = [line.split('|') for line in self.file]
         self.titles = [task[0] for task in (self.tasks)]
         self.deadlines = [task[1] for task in (self.tasks)]
 
+    def __len__(self):
+        return len(self.titles)
+    
     def __getitem__(self, idx):
         for i in range(len(self.titles)):
             if i == idx:
                 return self.titles[i]
     
-    def __len__(self):
-        return len(self.titles)
-
     def __iter__(self):
         for i in range(len(self.titles)):
             yield self.titles[i]
@@ -64,7 +66,7 @@ class Core:
             self.titles.append(temp_titles[i])
             self.deadlines.append(temp_deadlines[i])
 
-    def open(self, file):
+    def open(self, file=path.join('.', 'data', 'tasks.txt')):
         self.file = open(file, 'r+')
 
     def clear(self):

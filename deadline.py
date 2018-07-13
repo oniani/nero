@@ -3,7 +3,7 @@ from deadline.interactions import Information, InteractiveHelp, Function
 from deadline.colorize import red, green, blue, cyan
 
 def main():
-    tasks = Core('data/tasks.txt')
+    tasks = Core()
     Information.info()
     
     history = []
@@ -11,7 +11,7 @@ def main():
     
     while run:
         cmd = input()
-        tasks.open('data/tasks.txt')
+        tasks.open()
 
         if cmd == 'help':
             Function.wn_clear()
