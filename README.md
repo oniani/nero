@@ -28,8 +28,8 @@ Here is the list of its functionalities:
 * `ls` - list all tasks
 * `ls --ttl` - list titles only
 * `ls --ddl` - list deadlines only
-* `add` - add task
-* `rm` - remove task by its index
+* `add` - add a task
+* `rm` - remove a task by its index
 * `h` - show command history for the current session
 * `clear` - clear the terminal window
 * `stop` - stop running the app and save my edits

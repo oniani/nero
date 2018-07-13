@@ -27,7 +27,7 @@ def main():
 
         elif cmd == 'ls --ttl':
             Function.wn_clear()
-            for item in tasks:
+            for item in tasks.get_titles():
                 print(item)
 
         elif cmd == 'ls --ddl':

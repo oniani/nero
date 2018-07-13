@@ -1,7 +1,7 @@
 class Core:
     def __init__(self, file):
         self.file = open(file, 'r+')
-        self.tasks = [line.split(',') for line in self.file]
+        self.tasks = [line.split('|') for line in self.file]
         self.titles = [task[0] for task in (self.tasks)]
         self.deadlines = [task[1] for task in (self.tasks)]
 
@@ -29,24 +29,23 @@ class Core:
         
         return res
 
+    def get_titles(self):
+        return self.titles
+
     def get_deadlines(self):
         return self.deadlines
 
     def add_task(self, title, deadline):
-        deadline += '\n'
-
         temp_titles = self.titles
         temp_deadlines = self.deadlines
 
         self.clear()
-
-        self.file.write(title + ',' + deadline)
-
+        self.file.write(title + '|' + deadline + '\n')
         self.titles.append(title)
-        self.deadlines.append(deadline)
+        self.deadlines.append(deadline + '\n')
 
         for i in range(len(temp_titles)):
-            self.file.write(temp_titles[i] + ',' + temp_deadlines[i])
+            self.file.write(temp_titles[i] + '|' + temp_deadlines[i])
             self.titles.append(temp_titles[i])
             self.deadlines.append(temp_deadlines[i])
 
@@ -61,7 +60,7 @@ class Core:
         self.clear()
 
         for i in range(len(temp_titles)):
-            self.file.write(temp_titles[i] + ',' + temp_deadlines[i])
+            self.file.write(temp_titles[i] + '|' + temp_deadlines[i])
             self.titles.append(temp_titles[i])
             self.deadlines.append(temp_deadlines[i])
 

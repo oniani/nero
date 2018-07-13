@@ -22,8 +22,9 @@ class InteractiveHelp:
     def help():
         print("'ls' - list all tasks")
         print("'ls --ttl' - list titles only")
-        print("'add' - list deadlines only")
-        print("'rm' - remove task by its index")
+        print("'ls --ddl' - list deadlines only")
+        print("'add' - add a task")
+        print("'rm' - remove a task by its index")
         print("'h' - show command history for the current session")
         print("'clear' - clear the terminal window")
         print("'stop' - stop running the app and save my edits")
