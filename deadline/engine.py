@@ -1,7 +1,5 @@
-from os import path
-
 class Core:
-    def __init__(self, file=path.join('.', 'data', 'tasks.txt')):
+    def __init__(self, file):
         self.file = open(file, 'r+')
         self.tasks = [line.split('|') for line in self.file]
         self.titles = [task[0] for task in (self.tasks)]
@@ -66,7 +64,7 @@ class Core:
             self.titles.append(temp_titles[i])
             self.deadlines.append(temp_deadlines[i])
 
-    def open(self, file=path.join('.', 'data', 'tasks.txt')):
+    def open(self, file):
         self.file = open(file, 'r+')
 
     def clear(self):

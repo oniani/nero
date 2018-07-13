@@ -1,9 +1,11 @@
+from os import path
 from deadline.engine import Core
 from deadline.interactions import Information, InteractiveHelp, Function
 from deadline.colorize import red, green, blue, cyan
 
 def main():
-    tasks = Core()
+    file = path.join('.', 'data', 'tasks.txt')
+    tasks = Core(file)
     Information.info()
     
     history = []
@@ -11,7 +13,7 @@ def main():
     
     while run:
         cmd = input()
-        tasks.open()
+        tasks.open(file)
 
         if cmd == 'help':
             Function.wn_clear()
