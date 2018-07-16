@@ -8,9 +8,11 @@ Terminal is the core app for the software development. In theory, one could do v
 Installation is very simple and straightforward. There are two major ways to install **Deadline** on your machine.
 
 1. Through **Python** package installer 
+
 Run the command  `pip install deadline` and you are good to go!
 
 2. Through **GitHub** 
+
 Run the command `git clone https://github.com/oniani/deadline` and once the repository is cloned, drop it in whatever directory you want. Then do `cd` in that directory and run `python3 setup.py` and **Deadline** will start setting up its environment on your machine
 
 Once **Deadline** is set up, type `deadline` in the **terminal** and the app will start running.
