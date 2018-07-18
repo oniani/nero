@@ -1,41 +1,52 @@
+'''
+This is the app's primary engine
+'''
+
 class Core:
+    '''
+    Class contains the core functionalities of the app
+    '''
     def __init__(self, file):
         self.file = open(file, 'r+')
         self.tasks = [line.split('|') for line in self.file]
-        self.titles = [task[0] for task in (self.tasks)]
-        self.deadlines = [task[1] for task in (self.tasks)]
+        self.titles = [task[0] for task in self.tasks]
+        self.deadlines = [task[1] for task in self.tasks]
 
     def __len__(self):
         return len(self.titles)
-    
+
     def __getitem__(self, idx):
         for i in range(len(self.titles)):
             if i == idx:
                 return self.titles[i]
-    
+
     def __iter__(self):
         for i in range(len(self.titles)):
             yield self.titles[i]
-    
-    def __str__(self):
-        max_tsk_len = len(max(self.titles, key=len))
-        res = "Task" + "Deadline".rjust(27 + max_tsk_len, ' ')
-        res += '\n' + '='.rjust(max_tsk_len + 31, '=') + '\n'
 
-        for i in range(len(self.titles)):
-            res += str(i+1) + '. ' + (len(str(len(self.titles)))-len(str(i+1))) * ' '
-            res += self.titles[i]
-            res += self.deadlines[i].rjust(max_tsk_len - len(self.titles[i]) + 28, ' ')
-        
+    def __str__(self):
+        max_ttl_len = len(max(self.titles, key=len))
+        max_ddl_len = len(max(self.deadlines, key=len))
+        res = "Title" + ' ' * (max_ttl_len - len("Title") + 20) + "Deadline" # Find a better, conciser way to achieve the same ('rjust' is okay...)
+        res += '\n' + '='*(max_ttl_len + max_ddl_len + 20) + '\n'
+
+        for idx, (title, deadline) in enumerate(zip(self.titles, self.deadlines)):
+            res += str(idx+1) + '.' + (len(str(len(self.titles)))-len(str(idx+1))) * ' '
+            res += title
+            res += deadline.rjust(max_ttl_len - len(title) + 28, ' ')
+
         return res
 
     def get_titles(self):
+        '''Returns the list of all the task titles'''
         return self.titles
 
     def get_deadlines(self):
+        '''Returns the list of all the task deadlines'''
         return self.deadlines
 
     def add_task(self, title, deadline):
+        '''Adds new task'''
         temp_titles = self.titles
         temp_deadlines = self.deadlines
 
@@ -44,30 +55,33 @@ class Core:
         self.titles.append(title)
         self.deadlines.append(deadline + '\n')
 
-        for i in range(len(temp_titles)):
-            self.file.write(temp_titles[i] + '|' + temp_deadlines[i])
-            self.titles.append(temp_titles[i])
-            self.deadlines.append(temp_deadlines[i])
-
+        for title, deadline in zip(temp_titles, temp_deadlines):
+            self.file.write(title + '|' + deadline)
+            self.titles.append(title)
+            self.deadlines.append(deadline)
+            
     def remove_task(self, idx):
+        '''Removes task by the index'''
         if idx > 1:
             temp_titles = self.titles[:idx-1] + self.titles[idx:]
             temp_deadlines = self.deadlines[:idx-1] + self.deadlines[idx:]
         else:
             temp_titles = self.titles[1:]
             temp_deadlines = self.deadlines[1:]
-            
+
         self.clear()
 
-        for i in range(len(temp_titles)):
-            self.file.write(temp_titles[i] + '|' + temp_deadlines[i])
-            self.titles.append(temp_titles[i])
-            self.deadlines.append(temp_deadlines[i])
+        for title, deadline in zip(temp_titles, temp_deadlines):
+            self.file.write(title + '|' + deadline)
+            self.titles.append(title)
+            self.deadlines.append(deadline)
 
     def open(self, file):
+        '''Opens the file'''
         self.file = open(file, 'r+')
 
     def clear(self):
+        '''Clears all the data from the file as well as from the variables'''
         self.file.truncate(0)
         self.file.seek(0)
         self.tasks = []
@@ -75,4 +89,5 @@ class Core:
         self.deadlines = []
 
     def close(self):
+        '''Closes the file'''
         self.file.close()
