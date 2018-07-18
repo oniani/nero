@@ -27,7 +27,8 @@ class Core:
     def __str__(self):
         max_ttl_len = len(max(self.titles, key=len))
         max_ddl_len = len(max(self.deadlines, key=len))
-        res = "Title" + ' ' * (max_ttl_len - len("Title") + 20) + "Deadline" # Find a better, conciser way to achieve the same ('rjust' is okay...)
+        # Find a better, conciser way to achieve the same ('rjust' is okay...)
+        res = "Title" + ' ' * (max_ttl_len - len("Title") + 20) + "Deadline"
         res += '\n' + '='*(max_ttl_len + max_ddl_len + 20) + '\n'
 
         for idx, (title, deadline) in enumerate(zip(self.titles, self.deadlines)):
@@ -45,21 +46,21 @@ class Core:
         '''Returns the list of all the task deadlines'''
         return self.deadlines
 
-    def add_task(self, title, deadline):
+    def add_task(self, new_title, new_deadline):
         '''Adds new task'''
         temp_titles = self.titles
         temp_deadlines = self.deadlines
 
         self.clear()
-        self.file.write(title + '|' + deadline + '\n')
-        self.titles.append(title)
-        self.deadlines.append(deadline + '\n')
+        self.file.write(new_title + '|' + new_deadline + '\n')
+        self.titles.append(new_title)
+        self.deadlines.append(new_deadline + '\n')
 
         for title, deadline in zip(temp_titles, temp_deadlines):
             self.file.write(title + '|' + deadline)
             self.titles.append(title)
             self.deadlines.append(deadline)
-            
+
     def remove_task(self, idx):
         '''Removes task by the index'''
         if idx > 1:
