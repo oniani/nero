@@ -8,7 +8,7 @@ def blue(text):
     return '\033[1;34m' + text + '\033[1;m' + '\033[m'
 
 def yellow(text):
-    return '\033[1;33' + text + '\033[1;m' + '\033[m'
+    return '\033[1;33m' + text + '\033[1;m' + '\033[m'
 
 def magenta(text):
     return '\033[1;35m' + text + '\033[1;m' + '\033[m'
