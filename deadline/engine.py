@@ -7,16 +7,18 @@ class Core:
     '''
     Class contains the core functionalities of the app
     '''
-    def __init__(self, file):
-        csv.register_dialect('nero', delimiter='|', lineterminator='\n', quotechar='"')
+    def __init__(self, filename):
+        csv.register_dialect('nero', delimiter=',', lineterminator='\n', quotechar='"')
+        self.filename = filename
 
-        self.file = open(file, 'w+')
+        self.file = open(self.filename, 'r')
         self.task_reader = csv.reader(self.file, 'nero')
-        self.task_writer = csv.writer(self.file, 'nero')
-        
+
         self.titles = [task[0] for task in self.task_reader]
         self.file.seek(0)
         self.deadlines = [task[1] for task in self.task_reader]
+
+        self.file.close()
 
     def __len__(self):
         return len(self.titles)
@@ -57,12 +59,20 @@ class Core:
 
     def add_task(self, title, deadline):
         '''Adds new task'''
-        self.task_writer.writerow([title, deadline])
+        file = open(self.filename, 'a')
+        task_writer = csv.writer(file, 'nero')
+
+        task_writer.writerow([title, deadline])
         self.titles.append(title)
         self.deadlines.append(deadline)
 
+        file.close()
+
     def remove_task(self, idx):
         '''Removes task by the index'''
+        file = open(self.filename, 'w')
+        task_writer = csv.writer(file, 'nero')
+
         if idx > 1:
             self.titles = self.titles[:idx-1] + self.titles[idx:]
             self.deadlines = self.deadlines[:idx-1] + self.deadlines[idx:]
@@ -70,8 +80,9 @@ class Core:
             self.titles = self.titles[1:]
             self.deadlines = self.deadlines[1:]
 
-        self.file.truncate(0)
-        self.task_writer.writerows(zip(self.titles, self.deadlines))
+        task_writer.writerows(zip(self.titles, self.deadlines))
+
+        file.close()
 
     def open(self, file):
         '''Opens the file'''
