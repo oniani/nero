@@ -27,15 +27,12 @@ class Core:
     def __str__(self):
         max_ttl_len = len(max(self.titles, key=len))
         max_ddl_len = len(max(self.deadlines, key=len))
-        # Find a better, conciser way to achieve the same ('rjust' is okay...)
+
         res = "Title" + ' ' * (max_ttl_len - len("Title") + 20) + "Deadline"
-        res += '\n' + '='*(max_ttl_len + max_ddl_len + 20) + '\n'
+        res += '\n' + '='*(max_ttl_len + max_ddl_len + 19) + '\n'
 
-        for idx, (title, deadline) in enumerate(zip(self.titles, self.deadlines)):
-            res += str(idx+1) + '.' + (len(str(len(self.titles)))-len(str(idx+1))) * ' '
-            res += title
-            res += deadline.rjust(max_ttl_len - len(title) + 28, ' ')
-
+        for row in zip(self.titles, self.deadlines):
+            res += "".join(word.ljust(max_ttl_len + 20) for word in row) + '\n'
         return res
 
     def get_titles(self):
