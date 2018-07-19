@@ -1,10 +1,13 @@
-from os import path
+'''
+Importing main modules
+'''
+import os
 from deadline.engine import Core
 from deadline.interactions import Information, InteractiveHelp, Function
 from deadline.colorize import red, green, blue, cyan
 
 def main():
-    file = path.join('.', 'data', 'tasks.txt')
+    file = os.path.join('.', 'data', 'tasks.txt')
     tasks = Core(file)
     Information.info()
     

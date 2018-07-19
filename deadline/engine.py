@@ -1,21 +1,26 @@
 '''
 This is the app's primary engine
 '''
+import csv
 
 class Core:
     '''
     Class contains the core functionalities of the app
     '''
     def __init__(self, file):
-        self.file = open(file, 'r+')
-        self.tasks = [line.split('|') for line in self.file]
+        self.file = open(file)
+        self.tasks = csv.reader(self.file, delimiter='|')
         self.titles = [task[0] for task in self.tasks]
+        self.file.seek(0)
         self.deadlines = [task[1] for task in self.tasks]
 
     def __len__(self):
         return len(self.titles)
 
     def __getitem__(self, idx):
+        if idx > len(self.titles) - 1:
+            raise IndexError("Index is out of bounds")
+
         for i in range(len(self.titles)):
             if i == idx:
                 return self.titles[i]
@@ -29,10 +34,11 @@ class Core:
         max_ddl_len = len(max(self.deadlines, key=len))
 
         res = "Title" + ' ' * (max_ttl_len - len("Title") + 20) + "Deadline"
-        res += '\n' + '='*(max_ttl_len + max_ddl_len + 19) + '\n'
+        res += '\n' + '='*(max_ttl_len + max_ddl_len + 20) + '\n'
 
-        for row in zip(self.titles, self.deadlines):
-            res += "".join(word.ljust(max_ttl_len + 20) for word in row) + '\n'
+        for idx, task in enumerate(zip(self.titles, self.deadlines)):
+            res += str(idx+1) + '.' + "".join(word.ljust(max_ttl_len + 20) for word in task) + '\n'
+
         return res
 
     def get_titles(self):
