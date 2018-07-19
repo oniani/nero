@@ -7,7 +7,7 @@ from deadline.interactions import Information, InteractiveHelp, Function
 from deadline.colorize import red, green, blue, cyan
 
 def main():
-    file = os.path.join('.', 'data', 'tasks.txt')
+    file = os.path.join('.', 'data', 'tasks.csv')
     tasks = Core(file)
     Information.info()
     
