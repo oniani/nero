@@ -11,6 +11,13 @@ Not to mention the fact that all of them cost money.
 ## Nero philosophy
 **Nero** is based on a simple philosophy: *where there is a task, there also is a deadline*.
 
+## Continuous build status
+| Build Type      | Status | Artifacts |
+| ---             | ---    | ---       |
+| **Linux**   | ![Status](https://img.shields.io/teamcity/codebetter/bt428.svg) | [PyPi](https://pypi.org/project/nero/) |
+| **MacOS**       | ![Status](https://img.shields.io/teamcity/codebetter/bt428.svg) | [PyPi](https://pypi.org/project/nero/) |
+| **Windows**       | ![Status](https://img.shields.io/teamcity/codebetter/bt428.svg) | [PyPi](https://pypi.org/project/nero/) |
+
 ## Installation and getting started
 Installation is very simple and straightforward. There are two major ways to install **Nero** on your machine.
 
