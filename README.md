@@ -16,13 +16,13 @@ Installation is very simple and straightforward. There are two major ways to ins
 
 1. Through **Python** package installer 
 
-Run the command  `pip install nero` and you are good to go!
+    Run the command  `pip install nero` and you are good to go!
 
 2. Through **GitHub** 
 
-Run the command `git clone https://github.com/oniani/nero` and once the repository is cloned, drop it in whatever directory you want. Then do `cd` in that directory and run `python3 setup.py` and **Nero** will start setting up its environment on your machine
+    Run the command `git clone https://github.com/oniani/nero` and once the repository is cloned, drop it in whatever directory you want. Then do `cd` in that directory and run `python3 setup.py` and **Nero** will start setting up its environment on your machine
 
-Once **Nero** is set up, type `nero` in the **terminal** and the app will start running.
+Once **Nero** is set up, type `nero` in the **terminal** or **powershell** and the app will start running.
 
 ## Usage and functionality
 **Nero** has a very simple interface which is just a list of tasks with corresponding deadlines.
@@ -40,7 +40,7 @@ This is the list of available functionalities:
 - `q` - quit the app and save my edits
 
 ## How does it work?
-**Nero** is also very simple in terms of logic. Every task is stored in `.csv` file and the app either reads or writes to the file, depending on the command.
+**Nero** is also very simple in logic. Every task is stored in `.csv` file and the app either reads or writes to the file, depending on the command.
 
 ## License
 [MIT](https://www.github.com/oniani/LICENSE)
