@@ -1,0 +1,27 @@
+os:
+  - linux
+  - osx
+  - windows
+language: python
+python:
+  - "3.2"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+script:
+ - cd tests
+ - python -m pytest -vv nero_test.py
+git:
+  quiet: false
+branches:
+  only:
+  - master
+deploy:
+  provider: https://github.com/oniani/nero
+  skip_cleanup: false
+  github_token: $GITHUB_TOKEN
+  local_dir: "/public"
+  target_branch: master
+  on:
+    branch: source
