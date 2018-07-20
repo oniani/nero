@@ -1,6 +1,6 @@
 # Nero
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/oniani/Nero/blob/master/LICENSE/)
-![python 3_+](https://img.shields.io/badge/python-3+-green.svg)
+![python 3_+](https://img.shields.io/badge/Python-3+-green.svg)
 
 ## WTF is this?
 Terminal is the core app for the software development. In theory, one could do virtually anything using nothing other than a *UNIX terminal* or *Windows powershell*. We all have some tasks while programming or just doing things on computer. Most of people use apps like *Trello*, *Todoist*, etc. which help them manage tasks. Yet, these apps require opening browser or app store and installing them. Then one has to register and share his/her data with the company which created the app. Finally, none of them run in terminal and switching between windows is usually very discomforting which usually has a negative effect on productivity.
@@ -47,7 +47,6 @@ This is the list of available functionalities:
 - `q` - quit the app and save my edits
 
 ## How does it work?
-**Nero** is also very simple in logic. Every task is stored in `.csv` file and the app either reads or writes to the file, depending on the command.
-
+**Nero** is also very simple in logic. Every task is stored in `.csv` file and the app either reads or writes to the file, depending on the command. Code for **Nero** is fully compliant with [PEP8](https://www.python.org/dev/peps/pep-0008/?) coding conventions.
 ## License
 [MIT](https://www.github.com/oniani/LICENSE)

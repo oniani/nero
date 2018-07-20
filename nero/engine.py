@@ -3,12 +3,13 @@ This is the app's primary engine
 """
 import csv
 
+
 class Core:
     """
     This class contains the core functionalities of the app
     """
     def __init__(self, filename):
-        csv.register_dialect('nero', delimiter=',', lineterminator='\n', quotechar='"')
+        csv.register_dialect('nero', delimiter=',', lineterminator='\n')
         self.filename = filename
 
         file = open(self.filename, 'r')

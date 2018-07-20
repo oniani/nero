@@ -1,5 +1,5 @@
 """Testing nero modules"""
-from nero.engine import Core #add_task, remove_task
+from nero.engine import Core
 from nero.interactions import Information, InteractiveHelp, Function
 from nero.colorize import red, green, blue, yellow, magenta, cyan, black, white
 
@@ -8,27 +8,27 @@ def test_Core():
     """Testing 'Core' class"""
     # Creating the 'Core' class instance
     test_tasks = Core('test_tasks.csv')
-    
+
     # Testing 'self.titles'
     assert test_tasks.titles == ['Zeroth task', 'First task', 'Second task',
                                  'Third task', 'Fourth task', 'Fifth task',
                                  'Sixth task', 'Seventh task', 'Eight task',
                                  'Ninth task', 'Tenth task', 'Eleventh task',
                                  'Twelfth task']
-    
+
     # Testing 'self.deadlines'
     assert test_tasks.deadlines == ['00/00/2018', '01/01/2018', '02/02/2018',
                                     '03/03/2018', '04/04/2018', '05/05/2018',
                                     '06/06/2018', '07/07/2018', '08/08/2018',
                                     '09/09/2018', '10/10/2018', '11/11/2018',
                                     '12/12/2018']
-    
+
     # Testing '__len__' method
     assert len(test_tasks) == 13
 
     # Testing '__getitem__' method
     assert test_tasks[10] == 'Tenth task'
-    
+
     # Testing '__iter__ method
     count = 0
     for _ in test_tasks:
@@ -80,11 +80,12 @@ def test_Core():
                                                                   '09/09/2018', '10/10/2018', '11/11/2018',
                                                                   '12/12/2018']
 
+
 def test_Information(capfd):
     """Testing 'Information' class"""
     # Creating 'Information' class instance
     test_Information = Information()
-    
+
     # Testing 'info' method
     test_Information.info()
     out, err = capfd.readouterr()

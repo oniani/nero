@@ -2,6 +2,7 @@
 import os
 from nero.colorize import red
 
+
 class Information:
     """Class to provide various information"""
     @classmethod
@@ -18,6 +19,7 @@ class Information:
         file = open(file, 'r')
         for line in file.readlines():
             print(line, end='')
+
 
 class InteractiveHelp:
     """Class to provide help and hints to the user"""
@@ -36,23 +38,24 @@ class InteractiveHelp:
     @classmethod
     def give_hint_by_cmd(cls, cmd):
         """Method for giving hints to the user"""
-        if cmd == 'l' or cmd == 's' or cmd == 'Ls' or cmd == 'lS' or cmd == 'lss' or cmd == 'lls':
+        if cmd in ['l', 's', 'Ls', 'lS', 'lss', 'lls']:
             print("Did you mean 'ls' ?")
 
-        elif cmd == 'ad' or cmd == 'addd' or cmd == 'da' or cmd == 'd' or cmd == 'dd':
+        elif cmd in ['ad', 'addd', 'da', 'd', 'dd']:
             print("Did you mean 'add' ?")
 
-        elif cmd == 'rm' or cmd == 'r' or cmd == 'm' or cmd == 'rmm' or cmd == 'rem':
+        elif cmd in ['rm', 'r', 'm', 'rmm', 'rem']:
             print("Did you mean 'rm' ?")
 
-        elif cmd == 'sto' or cmd == 'stopp' or cmd == 'stoop' or cmd == 'stp' or cmd == 'st':
+        elif cmd in ['sto', 'stopp', 'stoop', 'stp', 'st']:
             print("Did you mean 'stop' ?")
 
-        elif cmd == 'cle' or cmd == 'clearr' or cmd == 'cllar' or cmd == 'cllear' or cmd == 'lear':
+        elif cmd in ['cle', 'clearr', 'cllar', 'cllear', 'lear']:
             print("Did you mean 'clear' ?")
 
         else:
-            print(red("Sorry, this is an invalid command. Type 'help' for more information"))
+            print(red("Invalid command. Type 'help' for more information"))
+
 
 class Function:
     """Class for terminal functionalities"""
