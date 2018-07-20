@@ -1,31 +1,29 @@
-'''
-Importing main modules
-'''
+"""Importing main modules"""
 import os
-from deadline.engine import Core
-from deadline.interactions import Information, InteractiveHelp, Function
-from deadline.colorize import red, green, blue, cyan
+from nero.engine import Core
+from nero.interactions import Information, InteractiveHelp, Function
+from nero.colorize import red, green, blue, cyan
 
 def main():
-    file = os.path.join('.', 'data', 'tasks.csv')
+    """The main function; all the magic happens here"""
+    file = os.path.join('data', 'tasks.csv')
     tasks = Core(file)
     Information.info()
-    
+
     history = []
     run = True
-    
+
     while run:
         cmd = input()
-        tasks.open(file)
 
         if cmd == 'help':
             Function.wn_clear()
             InteractiveHelp.help()
-        
+
         elif cmd == 'license':
             Function.wn_clear()
             Information.license('LICENSE')
-        
+
         elif cmd == 'ls':
             Function.wn_clear()
             print(tasks, end='')
@@ -46,31 +44,31 @@ def main():
             tasks.add_task(title, deadline)
             Function.wn_clear()
             print(tasks, end='')
-        
+
         elif cmd == 'rm':
             idx = input(red("Enter the index of the task you want to remove: "))
-            
+
             while not idx.isdigit() or int(idx) < 1 or int(idx) > len(tasks):
-                print(red("Task index is a positive integer which is more than 1 and less than the number of tasks!"))
+                print(red("Task index is a positive integer between 1 and the number of tasks!"))
                 idx = input(red("Please, re-enter your task index: "))
 
             idx = int(idx)
             tasks.remove_task(idx)
             Function.wn_clear()
             print(tasks, end='')
-        
+
         elif cmd == 'clear':
             Function.wn_clear()
 
         elif cmd == 'h':
             Function.wn_clear()
-            for i in range(len(history)):
-                if i != len(history) - 1:
-                    print(history[i], end=', ')
+            for idx, item in enumerate(history):
+                if idx != len(history)-1:
+                    print(item, end=', ')
                 else:
-                    print(history[i])
+                    print(item)
 
-        elif cmd == 'stop':
+        elif cmd == 'q':
             run = False
             print(cyan("The application has stopped running"))
 
@@ -78,8 +76,7 @@ def main():
             InteractiveHelp.give_hint_by_cmd(cmd)
 
         history.append(cmd)
-        tasks.close()
-    
+
     history.clear()
 
     return True
