@@ -2,7 +2,7 @@
 import os
 from nero.engine import Core
 from nero.interactions import Information, InteractiveHelp, Function
-from nero.colorize import red, green, blue, cyan
+from nero.colorize import red, green, cyan
 
 def main():
     """The main function; all the magic happens here"""
@@ -39,8 +39,8 @@ def main():
                 print(item, end='')
 
         elif cmd == 'add':
-            title = input(blue("Write your task title: "))
-            deadline = input(blue("Write your task deadline: "))
+            title = input(green("Write your task title: "))
+            deadline = input(green("Write your task deadline: "))
             tasks.add_task(title, deadline)
             Function.wn_clear()
             print(tasks, end='')
@@ -62,15 +62,12 @@ def main():
 
         elif cmd == 'h':
             Function.wn_clear()
-            for idx, item in enumerate(history):
-                if idx != len(history)-1:
-                    print(item, end=', ')
-                else:
+            for item in history:
                     print(item)
 
         elif cmd == 'q':
             run = False
-            print(cyan("The application has stopped running"))
+            print(cyan("The application has stopped running. Your changes have been saved."))
 
         else:
             InteractiveHelp.give_hint_by_cmd(cmd)
