@@ -1,5 +1,3 @@
-# see -> https://github.com/pypa/python-packaging-user-guide/blob/master/source/tutorials/packaging-projects.rst
-
 import setuptools
 
 with open("README.md", "r") as fh:

@@ -47,6 +47,6 @@ This is the list of available functionalities:
 - `q` - quit the app and save my edits
 
 ## How does it work?
-**Nero** is also very simple in logic. Every task is stored in `.csv` file and the app either reads or writes to the file, depending on the command. Code for **Nero** is fully compliant with [PEP8](https://www.python.org/dev/peps/pep-0008/?) coding conventions.
+**Nero** has a simple logic. Every task is stored in `.csv` file and the app either reads or writes to the file, depending on the command. Code for **Nero** is fully compliant with [PEP8](https://www.python.org/dev/peps/pep-0008/?) coding conventions.
 ## License
 [MIT](https://www.github.com/oniani/LICENSE)
