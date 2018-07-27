@@ -1,6 +1,6 @@
 """Importing modules"""
 import os
-from nero.colorize import red
+from nero.colorize import red, magenta, green
 
 
 class Information:
@@ -26,14 +26,16 @@ class InteractiveHelp:
     @classmethod
     def help(cls):
         """Method for the 'help' command"""
-        print("'ls' - list all tasks")
-        print("'ls --ttl' - list titles only")
-        print("'ls --ddl' - list deadlines only")
-        print("'add' - add a task")
-        print("'rm' - remove a task by its index")
-        print("'h' - show command history for the current session")
-        print("'clear' - clear the terminal window")
-        print("'q' - quit and save my edits")
+        print(magenta("ls") +  "⟶".rjust(13) + "     list all tasks")
+        print(magenta("ls --ttl") + "⟶".rjust(7) + "     list titles only")
+        print(magenta("ls --ddl") + "⟶".rjust(7) + "     list deadlines only")
+        print(magenta("add") + "⟶".rjust(12) + "     add a task")
+        print(magenta("rm") + "⟶".rjust(13) + "     remove a task by its index")
+        print(magenta("h") + "⟶".rjust(14) + "     show command history for the current session")
+        print(magenta("clear") + "⟶".rjust(10) + "     clear the terminal window")
+        print(magenta("q") + "⟶".rjust(14) + "     quit and" + green(" save my edits"))
+        print(magenta("!q") + "⟶".rjust(13) +  "     quit and" + red(" DO NOT") + green(" save my edits"))
+        print(magenta("FULL CLEAR") + "⟶".rjust(5) + red("     erase all the tasks, this is a irreversible nuclear option"))
 
     @classmethod
     def give_hint_by_cmd(cls, cmd):
@@ -66,3 +68,21 @@ class Function:
             os.system('cls')
         else:
             os.system('clear')
+    
+    @classmethod
+    def undo(cls, file_1, file_2):
+        file_1 = open(file_1, 'r')
+        lines = file_1.readlines()
+        file_1.close()
+
+        file_2 = open(file_2, 'w')
+
+        for task in lines:
+            file_2.write(task)
+        
+        file_2.close()
+    
+    @classmethod
+    def full_clear(cls, file):
+        file = open(file, 'w')
+        file.close()

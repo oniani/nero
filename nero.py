@@ -6,8 +6,10 @@ from nero.colorize import red, green, cyan
 
 def main():
     """The main function; all the magic happens here"""
-    file = os.path.join('data', 'tasks.csv')
-    tasks = Core(file)
+    file_1 = os.path.join('data', 'tasks.csv')
+    file_2 = os.path.join('data', 'reserve.csv')
+
+    tasks = Core(file_1)
     Information.info()
 
     history = []
@@ -63,11 +65,28 @@ def main():
         elif cmd == 'h':
             Function.wn_clear()
             for item in history:
-                    print(item)
+                print(item)
 
         elif cmd == 'q':
             run = False
             print(cyan("The application has stopped running. Your changes have been saved."))
+
+        elif cmd == '!q':
+            run = False
+            Function.undo(file_2, file_1)
+            print(cyan("The application has stopped running. Your changes have NOT been saved."))
+
+        elif cmd == 'FULL CLEAR':
+            confirm = input(red("This command will remove all of your tasks, are you sure? Y/n\n"))
+            if confirm == 'Y':
+                Function.full_clear(file_1)
+                print(red("All the tasks have been deleted, there is no going back now..."))
+                run = False
+            else:
+                print(green("Ugh... You almost wiped your tasks clean"))
+
+        elif cmd == '':
+            pass
 
         else:
             InteractiveHelp.give_hint_by_cmd(cmd)
