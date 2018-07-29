@@ -3,9 +3,6 @@ import os
 from nero.engine import Core
 from nero.interactions import Information, InteractiveHelp, Function
 
-def red(text):
-    """Make text red"""
-    return '\033[1;31m' + text + '\033[1;m' + '\033[m'
 
 def main():
     """The main function; all the magic happens here"""
@@ -51,11 +48,11 @@ def main():
             print(tasks, end='')
 
         elif cmd == 'rm':
-            idx = input(red("Enter the index of the task you want to remove: "))
+            idx = input("Enter the index of the task you want to remove: ")
 
             while not idx.isdigit() or int(idx) < 1 or int(idx) > len(tasks):
-                print(red("Task index is a positive integer between 1 and the number of tasks!"))
-                idx = input(red("Please, re-enter your task index: "))
+                print("Task index is a positive integer between 1 and the number of tasks!")
+                idx = input("Please, re-enter your task index: ")
 
             idx = int(idx)
             tasks.remove_task(idx)
@@ -72,7 +69,7 @@ def main():
 
         elif cmd == 'q':
             run = False
-            print(cyan("The application has stopped running. Your changes have been saved."))
+            print("The application has stopped running. Your changes have been saved.")
 
         elif cmd == '!q':
             run = False
@@ -80,10 +77,10 @@ def main():
             print("The application has stopped running. Your changes have NOT been saved.")
 
         elif cmd == 'FULL CLEAR':
-            confirm = input(red("This command will remove all of your tasks, are you sure? Y/n\n"))
+            confirm = input("This command will remove all of your tasks, are you sure? Y/n\n")
             if confirm == 'Y':
                 Function.full_clear(file_1)
-                print(red("All the tasks have been deleted, there is no going back now..."))
+                print("All the tasks have been deleted, there is no going back now...")
                 run = False
             else:
                 print("Ugh... You almost wiped your tasks clean")
