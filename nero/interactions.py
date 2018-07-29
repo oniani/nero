@@ -1,6 +1,5 @@
 """Importing modules"""
 import os
-from nero.colorize import red, magenta, green
 
 
 class Information:
@@ -26,16 +25,16 @@ class InteractiveHelp:
     @classmethod
     def help(cls):
         """Method for the 'help' command"""
-        print(magenta("ls") +  "⟶".rjust(13) + "     list all tasks")
-        print(magenta("ls --ttl") + "⟶".rjust(7) + "     list titles only")
-        print(magenta("ls --ddl") + "⟶".rjust(7) + "     list deadlines only")
-        print(magenta("add") + "⟶".rjust(12) + "     add a task")
-        print(magenta("rm") + "⟶".rjust(13) + "     remove a task by its index")
-        print(magenta("h") + "⟶".rjust(14) + "     show command history for the current session")
-        print(magenta("clear") + "⟶".rjust(10) + "     clear the terminal window")
-        print(magenta("q") + "⟶".rjust(14) + "     quit and" + green(" save my edits"))
-        print(magenta("!q") + "⟶".rjust(13) +  "     quit and" + red(" DO NOT") + green(" save my edits"))
-        print(magenta("FULL CLEAR") + "⟶".rjust(5) + red("     erase all the tasks, this is a irreversible nuclear option"))
+        print("ls" +  "⟶".rjust(13) + "     list all tasks")
+        print("ls --ttl" + "⟶".rjust(7) + "     list titles only")
+        print("ls --ddl" + "⟶".rjust(7) + "     list deadlines only")
+        print("add" + "⟶".rjust(12) + "     add a task")
+        print("rm" + "⟶".rjust(13) + "     remove a task by its index")
+        print("h" + "⟶".rjust(14) + "     show command history for the current session")
+        print("clear" + "⟶".rjust(10) + "     clear the terminal window")
+        print("q" + "⟶".rjust(14) + "     quit and" + " save my edits")
+        print("!q" + "⟶".rjust(13) +  "     quit and" + " DO NOT" + " save my edits")
+        print("FULL CLEAR" + "⟶".rjust(5) + "     erase all the tasks, this is a irreversible nuclear option")
 
     @classmethod
     def give_hint_by_cmd(cls, cmd):

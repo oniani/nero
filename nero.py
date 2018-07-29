@@ -2,7 +2,10 @@
 import os
 from nero.engine import Core
 from nero.interactions import Information, InteractiveHelp, Function
-from nero.colorize import red, green, cyan
+
+def red(text):
+    """Make text red"""
+    return '\033[1;31m' + text + '\033[1;m' + '\033[m'
 
 def main():
     """The main function; all the magic happens here"""
@@ -41,8 +44,8 @@ def main():
                 print(item, end='')
 
         elif cmd == 'add':
-            title = input(green("Write your task title: "))
-            deadline = input(green("Write your task deadline: "))
+            title = input("Write your task title: ")
+            deadline = input("Write your task deadline: ")
             tasks.add_task(title, deadline)
             Function.wn_clear()
             print(tasks, end='')
@@ -74,7 +77,7 @@ def main():
         elif cmd == '!q':
             run = False
             Function.undo(file_2, file_1)
-            print(cyan("The application has stopped running. Your changes have NOT been saved."))
+            print("The application has stopped running. Your changes have NOT been saved.")
 
         elif cmd == 'FULL CLEAR':
             confirm = input(red("This command will remove all of your tasks, are you sure? Y/n\n"))
@@ -83,7 +86,7 @@ def main():
                 print(red("All the tasks have been deleted, there is no going back now..."))
                 run = False
             else:
-                print(green("Ugh... You almost wiped your tasks clean"))
+                print("Ugh... You almost wiped your tasks clean")
 
         elif cmd == '':
             pass

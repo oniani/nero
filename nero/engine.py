@@ -43,12 +43,12 @@ class Core:
         except:
             max_ttl_len = max_ddl_len = 0
 
-        res = "Title" + ' ' * (max_ttl_len - len("Title") + 22) + "Deadline"
-        res += '\n' + '='*(max_ttl_len + max_ddl_len + 22) + '\n'
+        res = "N   Title" + ' ' * (max_ttl_len - len("Title") + 13) + "Deadline"
+        res += '\n' + '='*(max_ttl_len + max_ddl_len + 17) + '\n'
 
         for idx, task in enumerate(zip(self.titles, self.deadlines)):
-            res += str(idx+1) + '.'
-            res += ''.join(word.ljust(max_ttl_len + 20) for word in task)
+            res += str(idx) + '.' + ''.rjust(3 - len(str(idx)))
+            res += ''.join(word.ljust(max_ttl_len + 13) for word in task)
             res += '\n'
 
         return res
@@ -77,8 +77,8 @@ class Core:
         file = open(self.filename, 'w')
         task_writer = csv.writer(file, 'nero')
 
-        del self.titles[idx-1]
-        del self.deadlines[idx-1]
+        del self.titles[idx]
+        del self.deadlines[idx]
 
         task_writer.writerows(zip(self.titles, self.deadlines))
 
