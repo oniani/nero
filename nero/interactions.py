@@ -34,7 +34,7 @@ class InteractiveHelp:
         print("clear" + "⟶".rjust(10) + "     clear the terminal window")
         print("q" + "⟶".rjust(14) + "     quit and" + " save my edits")
         print("!q" + "⟶".rjust(13) +  "     quit and" + " DO NOT" + " save my edits")
-        print("FULL CLEAR" + "⟶".rjust(5) + "     erase all the tasks, this is a irreversible nuclear option")
+        print("FULL CLEAR" + "⟶".rjust(5) + "     erase all the tasks, this is the irreversible nuclear option")
 
     @classmethod
     def give_hint_by_cmd(cls, cmd):
@@ -55,7 +55,7 @@ class InteractiveHelp:
             print("Did you mean 'clear' ?")
 
         else:
-            print(red("Invalid command. Type 'help' for more information"))
+            print("Invalid command. Type 'help' for more information")
 
 
 class Function:
@@ -67,9 +67,10 @@ class Function:
             os.system('cls')
         else:
             os.system('clear')
-    
+
     @classmethod
     def undo(cls, file_1, file_2):
+        """Reverts all the changes"""
         file_1 = open(file_1, 'r')
         lines = file_1.readlines()
         file_1.close()
@@ -78,10 +79,11 @@ class Function:
 
         for task in lines:
             file_2.write(task)
-        
+
         file_2.close()
-    
+
     @classmethod
     def full_clear(cls, file):
+        """Removes all the tasks"""
         file = open(file, 'w')
         file.close()
