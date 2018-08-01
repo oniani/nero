@@ -6,8 +6,8 @@ from nero.interactions import Information, InteractiveHelp, Function
 
 def main():
     """The main function; all the magic happens here"""
-    file_1 = os.path.join('data', 'tasks.csv')
-    file_2 = os.path.join('data', 'reserve.csv')
+    file_1 = os.path.join(os.path.dirname(__file__), 'data', 'tasks.csv')
+    file_2 = os.path.join(os.path.dirname(__file__), 'data', 'reserve.csv')
 
     tasks = Core(file_1)
     Information.info()
