@@ -32,7 +32,6 @@ class InteractiveHelp:
         print("rm" + "⟶".rjust(13) + "     remove a task by its index")
         print("clear" + "⟶".rjust(10) + "     clear the terminal window")
         print("h" + "⟶".rjust(14) + "     show command history for the current session")
-        print("undo" + "⟶".rjust(10) + "     undo the previous command")
         print("q" + "⟶".rjust(14) + "     quit and" + " save my edits")
         print("!q" + "⟶".rjust(13) +  "     quit and" + " DO NOT" + " save my edits")
         print("FULL CLEAR" + "⟶".rjust(5) + "     erase all the tasks, this is the irreversible nuclear option")
