@@ -50,7 +50,7 @@ def main():
         elif cmd == 'rm':
             idx = input("Enter the index of the task you want to remove: ")
 
-            while not idx.isdigit() or int(idx) < 1 or int(idx) > len(tasks):
+            while not idx.isdigit() or int(idx) < 1 or int(idx) >= len(tasks):
                 print("Task index is a positive integer between 1 and the number of tasks!")
                 idx = input("Please, re-enter your task index: ")
 

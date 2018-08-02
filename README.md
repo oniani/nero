@@ -11,7 +11,7 @@ Terminal is the core app for the software development. In theory, one could do v
 ## Continuous build status
 | Build Type      | Status |
 | ---             | ---    |
-| **Linux**   | ![Status](https://img.shields.io/teamcity/codebetter/bt428.svg) |
+| **Linux**       | ![Status](https://img.shields.io/teamcity/codebetter/bt428.svg) |
 | **MacOS**       | ![Status](https://img.shields.io/teamcity/codebetter/bt428.svg) |
 
 ## Getting started
@@ -52,8 +52,8 @@ This is the list of available functionalities:
 - `ls --ddl` - list deadlines only
 - `add` - add a task
 - `rm` - remove a task by its index
-- `h` - show command history for the current session
 - `clear` - clear the terminal window
+- `h` - show command history for the current session
 - `q` - quit and save my edits
 - `!q` - quit and DO NOT save my edits
 - `FULL CLEAR` - erase all the tasks, this is the irreversible nuclear option
@@ -62,6 +62,4 @@ This is the list of available functionalities:
 **Nero** has a simple logic. Every task is stored in `CSV` file and the app either reads or writes to the file, depending on the command.
 
 ## License
-[MIT](https://www.github.com/oniani/LICENSE)
-
-<!-- For more information see [Nero repository on GitHub](https://github.com/oniani/nero). Code for **Nero** is fully compliant with [PEP8](https://www.python.org/dev/peps/pep-0008/?) coding conventions. -->
+[MIT](https://github.com/oniani/nero/blob/master/LICENSE)
