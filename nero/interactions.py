@@ -76,7 +76,7 @@ class Function:
 
     @classmethod
     def rewrite(cls, file_1, file_2):
-        """Rewrites (copies) the contents of one file to another"""
+        """Rewrites (copies) the contents of one file to the other"""
         shutil.copyfile(file_1, file_2)
 
     @classmethod
