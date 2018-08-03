@@ -38,7 +38,7 @@ def main():
         elif cmd == 'ls --ddl':
             Function.wn_clear()
             for item in tasks.get_deadlines():
-                print(item, end='')
+                print(item)
 
         elif cmd == 'add':
             title = input("Write your task title: ")
