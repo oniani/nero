@@ -44,7 +44,11 @@ class Core:
             max_ttl_len = max_ddl_len = 0
 
         res = "N   Title" + ' ' * (max_ttl_len - len("Title") + 13) + "Deadline"
-        res += '\n' + '='*(max_ttl_len + max_ddl_len + 17) + '\n'
+        
+        if len(self) != 0:
+            res += '\n' + '=' * (max_ttl_len + max_ddl_len + 17) + '\n'
+        else:
+            res += '\n' + '=' * 25 + '\n'
 
         for idx, task in enumerate(zip(self.titles, self.deadlines)):
             res += str(idx) + '.' + ''.rjust(3 - len(str(idx)))

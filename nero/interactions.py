@@ -1,5 +1,6 @@
 """Importing modules"""
 import os
+import shutil
 
 
 class Information:
@@ -71,16 +72,12 @@ class Function:
     @classmethod
     def undo(cls, file_1, file_2):
         """Reverts all the changes"""
-        file_1 = open(file_1, 'r')
-        lines = file_1.readlines()
-        file_1.close()
+        shutil.copyfile(file_2, file_1)
 
-        file_2 = open(file_2, 'w')
-
-        for task in lines:
-            file_2.write(task)
-
-        file_2.close()
+    @classmethod
+    def rewrite(cls, file_1, file_2):
+        """Rewrites (copies) the contents of one file to another"""
+        shutil.copyfile(file_1, file_2)
 
     @classmethod
     def full_clear(cls, file):
