@@ -1,5 +1,7 @@
-"""Importing modules"""
-from .engine import Core
-from .interactions import Information, InteractiveHelp, Function
+"""
+Import statements for nero modules
+"""
+from nero.engine import Core
+from nero.interactions import Information, InteractiveHelp, Function
 
-__all__ = ['engine', 'interactions']
+__all__ = ['Core', 'Information', 'InteractiveHelp', 'Function']

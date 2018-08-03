@@ -1,16 +1,22 @@
-"""Importing main modules"""
+"""
+Importing main modules
+"""
 import os
-from nero.engine import Core
-from nero.interactions import Information, InteractiveHelp, Function
+from nero import engine
+from nero import interactions
 
 
 def main():
     """The main function; all the magic happens here"""
     file_1 = os.path.join(os.path.dirname(__file__), 'data', 'tasks.csv')
     file_2 = os.path.join(os.path.dirname(__file__), 'data', 'reserve.csv')
+    
+    tasks = engine.Core(file_1)
 
-    tasks = Core(file_1)
-    Information.info()
+    interactions.Function.wn_clear()
+    interactions.Information.info()
+
+    print('\n', tasks, end='')
 
     history = []
     run = True
@@ -19,24 +25,24 @@ def main():
         cmd = input()
 
         if cmd == 'help':
-            Function.wn_clear()
-            InteractiveHelp.help()
+            interactions.Function.wn_clear()
+            interactions.InteractiveHelp.help()
 
         elif cmd == 'license':
-            Function.wn_clear()
-            Information.license('LICENSE')
+            interactions.Function.wn_clear()
+            interactions.Information.license('LICENSE')
 
         elif cmd == 'ls':
-            Function.wn_clear()
+            interactions.Function.wn_clear()
             print(tasks, end='')
 
         elif cmd == 'ls --ttl':
-            Function.wn_clear()
+            interactions.Function.wn_clear()
             for item in tasks.get_titles():
                 print(item)
 
         elif cmd == 'ls --ddl':
-            Function.wn_clear()
+            interactions.Function.wn_clear()
             for item in tasks.get_deadlines():
                 print(item)
 
@@ -44,7 +50,7 @@ def main():
             title = input("Write your task title: ")
             deadline = input("Write your task deadline: ")
             tasks.add_task(title, deadline)
-            Function.wn_clear()
+            interactions.Function.wn_clear()
             print(tasks, end='')
 
         elif cmd == 'rm':
@@ -56,31 +62,32 @@ def main():
 
             idx = int(idx)
             tasks.remove_task(idx)
-            Function.wn_clear()
+            interactions.Function.wn_clear()
             print(tasks, end='')
 
         elif cmd == 'clear':
-            Function.wn_clear()
+            interactions.Function.wn_clear()
 
         elif cmd == 'h':
-            Function.wn_clear()
+            interactions.Function.wn_clear()
             for item in history:
                 print(item)
 
         elif cmd == 'q':
             run = False
-            Function.rewrite(file_1, file_2)
+            interactions.Function.rewrite(file_1, file_2)
             print("The application has stopped running. Your changes have been saved.")
 
         elif cmd == '!q':
             run = False
-            Function.undo(file_1, file_2)
+            interactions.Function.undo(file_1, file_2)
             print("The application has stopped running. Your changes have NOT been saved.")
 
         elif cmd == 'FULL CLEAR':
             confirm = input("This command will remove all of your tasks, are you sure? Y/n\n")
             if confirm == 'Y':
-                Function.full_clear(file_1)
+                interactions.Function.full_clear(file_1)
+                interactions.Function.full_clear(file_2)
                 print("All the tasks have been deleted, there is no going back now...")
                 run = False
             else:
@@ -90,7 +97,7 @@ def main():
             pass
 
         else:
-            InteractiveHelp.give_hint_by_cmd(cmd)
+            interactions.InteractiveHelp.give_hint_by_cmd(cmd)
 
         history.append(cmd)
 
