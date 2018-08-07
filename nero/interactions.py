@@ -6,6 +6,7 @@ import shutil
 
 class Information:
     """Class to provide various information"""
+
     @classmethod
     def info(cls):
         """Method for 'info' command"""
@@ -24,6 +25,7 @@ class Information:
 
 class InteractiveHelp:
     """Class to provide help and hints to the user"""
+
     @classmethod
     def help(cls):
         """Method for the 'help' command"""
@@ -62,6 +64,7 @@ class InteractiveHelp:
 
 class Function:
     """Class for terminal functionalities"""
+    
     @classmethod
     def wn_clear(cls):
         """Clear the window"""
