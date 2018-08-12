@@ -59,8 +59,13 @@ This is the list of available functionalities:
 - `!q` - quit and DO NOT save my edits
 - `FULL CLEAR` - erase all the tasks, this is the irreversible nuclear option
 
+Short video regarding the interface and the command usage is available [here](https://drive.google.com/open?id=1Lp2vMTRWs8nDxUjXYzXkdwnWCBExvcXo).
+
 ## How does it work?
 **Nero** has a simple logic. Every task is stored in `CSV` file and the app either reads or writes to the file, depending on the command.
+
+## Dependencies
+**None** but **Python**
 
 ## License
 [MIT](https://github.com/oniani/nero/blob/master/LICENSE)

@@ -2,7 +2,6 @@
 
 from nero.engine import Core
 from nero.interactions import Information, InteractiveHelp, Function
-from nero.colorize import red, green, blue, yellow, magenta, cyan, black, white
 
 
 def test_Core():
@@ -11,14 +10,14 @@ def test_Core():
     test_tasks = Core('test_tasks.csv')
 
     # Testing 'self.titles'
-    assert test_tasks.titles == ['Zeroth task', 'First task', 'Second task',
+    assert test_tasks.get_titles() == ['Zeroth task', 'First task', 'Second task',
                                  'Third task', 'Fourth task', 'Fifth task',
                                  'Sixth task', 'Seventh task', 'Eight task',
                                  'Ninth task', 'Tenth task', 'Eleventh task',
                                  'Twelfth task']
 
     # Testing 'self.deadlines'
-    assert test_tasks.deadlines == ['00/00/2018', '01/01/2018', '02/02/2018',
+    assert test_tasks.get_deadlines() == ['00/00/2018', '01/01/2018', '02/02/2018',
                                     '03/03/2018', '04/04/2018', '05/05/2018',
                                     '06/06/2018', '07/07/2018', '08/08/2018',
                                     '09/09/2018', '10/10/2018', '11/11/2018',
@@ -47,7 +46,7 @@ def test_Core():
                                        'Twelfth task']
 
     # Testing 'get_deadlines' method
-    assert test_tasks.deadlines == ['00/00/2018', '01/01/2018', '02/02/2018',
+    assert test_tasks._deadlines == ['00/00/2018', '01/01/2018', '02/02/2018',
                                     '03/03/2018', '04/04/2018', '05/05/2018',
                                     '06/06/2018', '07/07/2018', '08/08/2018',
                                     '09/09/2018', '10/10/2018', '11/11/2018',
@@ -55,27 +54,27 @@ def test_Core():
 
     # Testing 'add_task' method
     test_tasks.add_task("Thirteenth Task", '13/13/2018')
-    assert test_tasks.titles == test_tasks.get_titles() == ['Zeroth task', 'First task', 'Second task',
+    assert test_tasks._titles == test_tasks.get_titles() == ['Zeroth task', 'First task', 'Second task',
                                                             'Third task', 'Fourth task', 'Fifth task',
                                                             'Sixth task', 'Seventh task', 'Eight task',
                                                             'Ninth task', 'Tenth task', 'Eleventh task',
                                                             'Twelfth task', 'Thirteenth Task']
 
-    assert test_tasks.deadlines == test_tasks.get_deadlines() == ['00/00/2018', '01/01/2018', '02/02/2018',
+    assert test_tasks._deadlines == test_tasks.get_deadlines() == ['00/00/2018', '01/01/2018', '02/02/2018',
                                                                   '03/03/2018', '04/04/2018', '05/05/2018',
                                                                   '06/06/2018', '07/07/2018', '08/08/2018',
                                                                   '09/09/2018', '10/10/2018', '11/11/2018',
                                                                   '12/12/2018', '13/13/2018']
 
     # Testing 'remove_task' method
-    test_tasks.remove_task(14)
-    assert test_tasks.titles == test_tasks.get_titles() == ['Zeroth task', 'First task', 'Second task',
+    test_tasks.remove_task(13)
+    assert test_tasks._titles == test_tasks.get_titles() == ['Zeroth task', 'First task', 'Second task',
                                                             'Third task', 'Fourth task', 'Fifth task',
                                                             'Sixth task', 'Seventh task', 'Eight task',
                                                             'Ninth task', 'Tenth task', 'Eleventh task',
                                                             'Twelfth task']
 
-    assert test_tasks.deadlines == test_tasks.get_deadlines() == ['00/00/2018', '01/01/2018', '02/02/2018',
+    assert test_tasks._deadlines == test_tasks.get_deadlines() == ['00/00/2018', '01/01/2018', '02/02/2018',
                                                                   '03/03/2018', '04/04/2018', '05/05/2018',
                                                                   '06/06/2018', '07/07/2018', '08/08/2018',
                                                                   '09/09/2018', '10/10/2018', '11/11/2018',
