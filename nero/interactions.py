@@ -29,6 +29,8 @@ class InteractiveHelp:
     @classmethod
     def help(cls):
         """Method for the 'help' command"""
+        print("help" +  "⟶".rjust(11) + "     show the manual for the commands")
+        print("license" +  "⟶".rjust(8) + "     show the license of the app")
         print("ls" +  "⟶".rjust(13) + "     list all tasks")
         print("ls --ttl" + "⟶".rjust(7) + "     list titles only")
         print("ls --ddl" + "⟶".rjust(7) + "     list deadlines only")

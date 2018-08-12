@@ -23,7 +23,7 @@ cd
 git clone https://github.com/oniani/nero.git
 ```
 
-After cloning the repo, run the app by executing the following commands:
+After cloning the repository, run the app by executing the following commands:
 
 ```sh
 cd nero
@@ -47,7 +47,7 @@ After having an alias and sourcing `.bash_profile` or `.bashrc` (depending on th
 
 This is the list of available functionalities:
 - `help` - shows a manual for the commands
-- `license` - shows the license for the app
+- `license` - shows the license of the app
 - `ls` - list all tasks
 - `ls --ttl` - list titles only
 - `ls --ddl` - list deadlines only
