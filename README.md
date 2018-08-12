@@ -16,7 +16,7 @@ Terminal is the core app for the software development. In theory, one could do v
 | **Windows**       | ![Status](https://img.shields.io/teamcity/codebetter/bt428.svg) |
 
 ## Getting started
-Since **Nero** is not a package, it is not available on [PyPi](https://pypi.org/). Yet, installation is still very simple and straightforward. The best way to have **Nero** set up is to download it from the **source**. Open the terminal and run the following commands:
+Since **Nero** is not a package, it is not available on [PyPI](https://pypi.org/). Yet, installation is still very simple and straightforward. The best way to have **Nero** set up is to download it from the **source**. Open the terminal and run the following commands:
 
 ```sh
 cd
