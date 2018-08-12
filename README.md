@@ -6,7 +6,7 @@
 **Nero** is a tiny app which runs in the terminal and helps organize tasks. It is copyright and cost free and is built using nothing but **Python**.
 
 ## Why another task management app?
-Terminal is the core app for the software development. In theory, one could do virtually anything using nothing other than a *UNIX terminal* or *Windows Powershell*. We all have some tasks while programming or working at the computer. Most of people use apps like *Trello*, *Todoist*, etc. which help them manage tasks. Yet, these apps require opening browser or some sort of app store and installing them. Then one has to register and share his/her data with the company which created the app. Finally, none of them run in terminal and switching between windows is usually very discomforting which usually has a negative effect on productivity (not to mention the fact that one still has to pay for most of them).
+Terminal is the core app for the software development. In theory, one could do virtually anything using nothing other than a *UNIX terminal* or *Windows Powershell*. We all have some tasks while programming or working at the computer. Most of people use apps like *Trello*, *Todoist*, etc. which help them manage tasks. Yet, these apps require opening browser or some sort of app store and installing them. Then one has to register and share his/her data with the company which created the app. Finally, none of them run in terminal and switching between windows is usually very discomforting (not to mention the fact that one still has to pay for most of them).
 
 ## Continuous build status
 | Build Type      | Status |

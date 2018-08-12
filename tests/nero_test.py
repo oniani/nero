@@ -36,7 +36,7 @@ def test_Core():
     assert count == 13
 
     # Testing '__str__' method
-    # assert str(test_tasks[1]) == ['sadsa']
+    # assert str(test_tasks[1]) == ['___']
 
     # Testing 'get_titles' method
     assert test_tasks.get_titles() == ['Zeroth task', 'First task', 'Second task',
@@ -46,7 +46,7 @@ def test_Core():
                                        'Twelfth task']
 
     # Testing 'get_deadlines' method
-    assert test_tasks._deadlines == ['00/00/2018', '01/01/2018', '02/02/2018',
+    assert test_tasks.get_deadlines() == ['00/00/2018', '01/01/2018', '02/02/2018',
                                     '03/03/2018', '04/04/2018', '05/05/2018',
                                     '06/06/2018', '07/07/2018', '08/08/2018',
                                     '09/09/2018', '10/10/2018', '11/11/2018',
