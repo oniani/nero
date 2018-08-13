@@ -52,7 +52,7 @@ class Core:
         else:
             res += '\n' + '=' * 25 + '\n'
 
-        for idx, task in enumerate(zip(self._titles, self._deadlines)):
+        for idx, task in enumerate(zip(self._titles[1:], self._deadlines[1:])):
             res += str(idx) + '.' + ''.rjust(3 - len(str(idx)))
             res += ''.join(word.ljust(max_ttl_len + 13) for word in task)
             res += '\n'
