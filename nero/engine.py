@@ -83,8 +83,8 @@ class Core:
         file = open(self._filename, 'w')
         task_writer = csv.writer(file, 'nero')
 
-        del self._titles[idx]
-        del self._deadlines[idx]
+        del self._titles[idx+1]
+        del self._deadlines[idx+1]
 
         task_writer.writerows(zip(self._titles, self._deadlines))
 
