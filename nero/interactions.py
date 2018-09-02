@@ -92,4 +92,3 @@ class Function:
         file.truncate(0)
         file.write("Title,Deadline")
         file.close()
-
