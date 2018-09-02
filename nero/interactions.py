@@ -89,4 +89,7 @@ class Function:
     def full_clear(cls, file):
         """Removes all the tasks"""
         file = open(file, 'w')
+        file.truncate(0)
+        file.write("Title,Deadline")
         file.close()
+
