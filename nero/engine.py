@@ -1,15 +1,16 @@
 """
-This is the app's primary engine
+Engine module
+
+David Oniani
+Licensed under MIT
 """
+
 
 import csv
 
 
 class Core:
-    """
-    This class contains the core functionalities of the app
-    """
-    
+    """This class contains the core functionalities of the app."""
     def __init__(self, filename):
         csv.register_dialect('nero', delimiter=',', lineterminator='\n')
         self._filename = filename
@@ -42,11 +43,12 @@ class Core:
         try:
             max_ttl_len = len(max(self._titles, key=len))
             max_ddl_len = len(max(self._deadlines, key=len))
-        except:
+        except Exception:
             max_ttl_len = max_ddl_len = 0
 
-        res = "N   Title" + ' ' * (max_ttl_len - len("Title") + 13) + "Deadline"
-        
+        res = "N   Title" + \
+            ' ' * (max_ttl_len - len("Title") + 13) + "Deadline"
+
         if len(self) != 0:
             res += '\n' + '=' * (max_ttl_len + max_ddl_len + 17) + '\n'
         else:
@@ -60,15 +62,15 @@ class Core:
         return res
 
     def get_titles(self):
-        """Return the list of task titles"""
+        """Return the list of task titles."""
         return self._titles
 
     def get_deadlines(self):
-        """Return the list of task deadlines"""
+        """Return the list of task deadlines."""
         return self._deadlines
 
     def add_task(self, title, deadline):
-        """Add a new task"""
+        """Add a new task."""
         file = open(self._filename, 'a')
         task_writer = csv.writer(file, 'nero')
 
@@ -79,7 +81,7 @@ class Core:
         file.close()
 
     def remove_task(self, idx):
-        """Remove a task by the index"""
+        """Remove a task by the index."""
         file = open(self._filename, 'w')
         task_writer = csv.writer(file, 'nero')
 

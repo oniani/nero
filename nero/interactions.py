@@ -1,12 +1,17 @@
-"""Importing modules"""
+"""
+Interactions module
+
+David Oniani
+Licensed under MIT
+"""
+
 
 import os
 import shutil
 
 
 class Information:
-    """Class to provide various information"""
-
+    """Class to provide various information."""
     @classmethod
     def info(cls):
         """Method for 'info' command"""
@@ -25,22 +30,21 @@ class Information:
 
 class InteractiveHelp:
     """Class to provide help and hints to the user"""
-
     @classmethod
     def help(cls):
         """Method for the 'help' command"""
-        print("help" +  "⟶".rjust(11) + "     show the manual for the commands")
-        print("license" +  "⟶".rjust(8) + "     show the license of the app")
-        print("ls" +  "⟶".rjust(13) + "     list all tasks")
-        print("ls --ttl" + "⟶".rjust(7) + "     list titles only")
-        print("ls --ddl" + "⟶".rjust(7) + "     list deadlines only")
-        print("add" + "⟶".rjust(12) + "     add a task")
-        print("rm" + "⟶".rjust(13) + "     remove a task by its index")
-        print("clear" + "⟶".rjust(10) + "     clear the terminal window")
-        print("h" + "⟶".rjust(14) + "     show command history for the current session")
-        print("q" + "⟶".rjust(14) + "     quit and" + " save my edits")
-        print("!q" + "⟶".rjust(13) +  "     quit and" + " DO NOT" + " save my edits")
-        print("FULL CLEAR" + "⟶".rjust(5) + "     erase all the tasks, this is the irreversible nuclear option")
+        print("help" + "-->".rjust(11) + "     show the manual for the commands")
+        print("license" + "-->".rjust(8) + "     show the license of the app")
+        print("ls" + "-->".rjust(13) + "     list all tasks")
+        print("ls --ttl" + "-->".rjust(7) + "     list titles only")
+        print("ls --ddl" + "-->".rjust(7) + "     list deadlines only")
+        print("add" + "-->".rjust(12) + "     add a task")
+        print("rm" + "-->".rjust(13) + "     remove a task by its index")
+        print("clear" + "-->".rjust(10) + "     clear the terminal window")
+        print("h" + "-->".rjust(14) + "     show command history for the current session")
+        print("q" + "-->".rjust(14) + "     quit and" + " save my edits")
+        print("!q" + "-->".rjust(13) + "     quit and" + " DO NOT" + " save my edits")
+        print("FULL CLEAR" + "-->".rjust(5) + "     erase all the tasks, this is the irreversible nuclear option")
 
     @classmethod
     def give_hint_by_cmd(cls, cmd):
@@ -66,7 +70,6 @@ class InteractiveHelp:
 
 class Function:
     """Class for terminal functionalities"""
-    
     @classmethod
     def wn_clear(cls):
         """Clear the window"""

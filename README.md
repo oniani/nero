@@ -8,13 +8,6 @@
 ## Why another task management app?
 Terminal is the core app for the software development. In theory, one could do virtually anything using nothing other than a *UNIX terminal* or *Windows Powershell*. We all have some tasks while programming or working at the computer. Most of people use apps like *Trello*, *Todoist*, etc. which help them manage tasks. Yet, these apps require opening browser or some sort of app store and installing them. Then one has to register and share his/her data with the company which created the app. Finally, none of them run in terminal and switching between windows is usually very discomforting (not to mention the fact that one still has to pay for most of them).
 
-## Continuous build status
-| Build Type      | Status |
-| ---             | ---    |
-| **Linux**       | ![Status](https://img.shields.io/teamcity/codebetter/bt428.svg) |
-| **MacOS**       | ![Status](https://img.shields.io/teamcity/codebetter/bt428.svg) |
-| **Windows**       | ![Status](https://img.shields.io/teamcity/codebetter/bt428.svg) |
-
 ## Getting started
 Since **Nero** is not a package, it is not available on [PyPI](https://pypi.org/). Yet, installation is still very simple and straightforward. The best way to have **Nero** set up is to download it from the **source**. Open the terminal and run the following commands:
 
@@ -29,15 +22,6 @@ After cloning the repository, run the app by executing the following commands:
 cd nero
 python3 nero.py
 ```
-
-<!-- Optionally, set an alias for **Nero** by executing the following commands in the terminal:
-
-```sh
-echo "alias runnero='python3 ~/nero/nero.py'" >> ~/.bash_profile # .bashrc in Linux
-source ~/.bash_profile # .bashrc in Linux
-```
-
-After having an alias and sourcing `.bash_profile` or `.bashrc` (depending on the os), type `nero` in the terminal and the app will start running no matter directory. -->
 
 ## Nero philosophy
 **Nero** is based on a simple philosophy: *where there is a task, there also is a deadline*.
@@ -59,13 +43,8 @@ This is the list of available functionalities:
 - `!q` - quit and DO NOT save my edits
 - `FULL CLEAR` - erase all the tasks, this is the irreversible nuclear option
 
-Short video regarding the interface and the command usage is available [here](https://drive.google.com/open?id=1Lp2vMTRWs8nDxUjXYzXkdwnWCBExvcXo).
-
 ## How does it work?
 **Nero** has a simple logic. Every task is stored in `CSV` file and the app either reads or writes to the file, depending on the command.
 
 ## Dependencies
 **None** but **Python**
-
-## License
-[MIT](https://github.com/oniani/nero/blob/master/LICENSE)

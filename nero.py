@@ -1,6 +1,10 @@
 """
-Importing main modules
+Nero
+
+Author: David Oniani
+Licensed under MIT
 """
+
 
 import os
 from nero import engine
@@ -8,10 +12,10 @@ from nero import interactions
 
 
 def main():
-    """The main function; all the magic happens here"""
+    """The main function - all the magic happens here."""
     file_1 = os.path.join(os.path.dirname(__file__), 'data', 'tasks.csv')
     file_2 = os.path.join(os.path.dirname(__file__), 'data', 'reserve.csv')
-    
+
     tasks = engine.Core(file_1)
 
     interactions.Function.wn_clear()
@@ -58,7 +62,8 @@ def main():
             idx = input("Enter the index of the task you want to remove: ")
 
             while not idx.isdigit() or int(idx) < 0 or int(idx) >= len(tasks):
-                print("Task index is a positive integer between 1 and the number of tasks!")
+                print("Task index is a positive integer between 1 and \
+                                                    the number of tasks!")
                 idx = input("Please, re-enter your task index: ")
 
             idx = int(idx)
@@ -77,19 +82,23 @@ def main():
         elif cmd == 'q':
             run = False
             interactions.Function.rewrite(file_1, file_2)
-            print("The application has stopped running. Your changes have been saved.")
+            print("The application has stopped running. \
+                            Your changes have been saved.")
 
         elif cmd == '!q':
             run = False
             interactions.Function.undo(file_1, file_2)
-            print("The application has stopped running. Your changes have NOT been saved.")
+            print("The application has stopped running. \
+                        Your changes have NOT been saved.")
 
         elif cmd == 'FULL CLEAR':
-            confirm = input("This command will remove all of your tasks, are you sure? Y/n\n")
+            confirm = input("This command will remove all of your tasks, \
+                                                        are you sure? Y/n\n")
             if confirm == 'Y':
                 interactions.Function.full_clear(file_1)
                 interactions.Function.full_clear(file_2)
-                print("All the tasks have been deleted, there is no going back now...")
+                print("All the tasks have been deleted, \
+                            there is no going back now...")
                 run = False
             else:
                 print("Ugh... You almost wiped your tasks clean")
@@ -105,6 +114,7 @@ def main():
     history.clear()
 
     return True
+
 
 if __name__ == "__main__":
     main()
