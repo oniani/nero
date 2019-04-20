@@ -1,4 +1,9 @@
-"""Importing modules"""
+"""
+Import statements for testing nero modules
+
+David Oniani
+Licensed under MIT
+"""
 
 from nero.engine import Core
 from nero.interactions import Information, InteractiveHelp, Function

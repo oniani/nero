@@ -1,5 +1,8 @@
 """
 Import statements for nero modules
+
+David Oniani
+Licensed under MIT
 """
 
 from nero.engine import Core

@@ -13,85 +13,89 @@ import shutil
 class Information:
     """Class to provide various information."""
     @classmethod
-    def info(cls):
-        """Method for 'info' command"""
+    def info(cls) -> None:
+        """Method for 'info' command."""
         print("Nero by David Oniani")
         print("Licensed under MIT")
         print("Copyright (c) 2018 David Oniani")
         print("Type 'help' or 'license' for more information")
 
     @classmethod
-    def license(cls, file):
-        """Method for 'license' command"""
-        file = open(file, 'r')
-        for line in file.readlines():
+    def license(cls, filename: str) -> None:
+        """Method for 'license' command."""
+        filename = open(filename, 'r')
+        for line in filename.readlines():
             print(line, end='')
 
 
 class InteractiveHelp:
-    """Class to provide help and hints to the user"""
+    """Class to provide help and hints to the user."""
     @classmethod
-    def help(cls):
-        """Method for the 'help' command"""
-        print("help" + "-->".rjust(11) + "     show the manual for the commands")
-        print("license" + "-->".rjust(8) + "     show the license of the app")
-        print("ls" + "-->".rjust(13) + "     list all tasks")
-        print("ls --ttl" + "-->".rjust(7) + "     list titles only")
-        print("ls --ddl" + "-->".rjust(7) + "     list deadlines only")
-        print("add" + "-->".rjust(12) + "     add a task")
-        print("rm" + "-->".rjust(13) + "     remove a task by its index")
-        print("clear" + "-->".rjust(10) + "     clear the terminal window")
-        print("h" + "-->".rjust(14) + "     show command history for the current session")
-        print("q" + "-->".rjust(14) + "     quit and" + " save my edits")
-        print("!q" + "-->".rjust(13) + "     quit and" + " DO NOT" + " save my edits")
-        print("FULL CLEAR" + "-->".rjust(5) + "     erase all the tasks, this is the irreversible nuclear option")
+    def help(cls) -> None:
+        """Method for the 'help' command."""
+        print("help" + "-->".rjust(12) + "   show the manual"
+              "for the commands")
+        print("license" + "-->".rjust(9) + "   show the license of the app")
+        print("ls" + "-->".rjust(14) + "   list all tasks")
+        print("ls --ttl" + "-->".rjust(8) + "   list titles only")
+        print("ls --ddl" + "-->".rjust(8) + "   list deadlines only")
+        print("add" + "-->".rjust(13) + "   add a task")
+        print("rm" + "-->".rjust(14) + "   remove a task by its index")
+        print("clear" + "-->".rjust(11) + "   clear the terminal window")
+        print("h" + "-->".rjust(15) + "   show command history for the"
+              "current session")
+        print("q" + "-->".rjust(15) + "   quit and" + " save my edits")
+        print("!q" + "-->".rjust(14) + "   quit and" + " DO NOT" +
+              " save my edits")
+        print("FULL CLEAR" + "-->".rjust(6) + "   erase all the tasks, "
+              "this is the irreversible nuclear option")
 
     @classmethod
-    def give_hint_by_cmd(cls, cmd):
-        """Method for giving hints to the user"""
-        if cmd in ['l', 's', 'Ls', 'lS', 'lss', 'lls']:
+    def give_hint_by_cmd(cls, cmd) -> None:
+        """Method for giving hints to the user."""
+        if cmd in {'l', 's', 'Ls', 'lS', 'lss', 'lls'}:
             print("Did you mean 'ls' ?")
 
-        elif cmd in ['ad', 'addd', 'da', 'd', 'dd']:
+        elif cmd in {'ad', 'addd', 'da', 'd', 'dd'}:
             print("Did you mean 'add' ?")
 
-        elif cmd in ['rm', 'r', 'm', 'rmm', 'rem']:
+        elif cmd in {'rm', 'r', 'm', 'rmm', 'rem'}:
             print("Did you mean 'rm' ?")
 
-        elif cmd in ['sto', 'stopp', 'stoop', 'stp', 'st']:
+        elif cmd in {'sto', 'stopp', 'stoop', 'stp', 'st'}:
             print("Did you mean 'stop' ?")
 
-        elif cmd in ['cle', 'clearr', 'cllar', 'cllear', 'lear']:
+        elif cmd in {'cle', 'clearr', 'cllar', 'cllear', 'lear'}:
             print("Did you mean 'clear' ?")
 
         else:
-            print("Invalid command. Type 'help' for more information")
+            print("Invalid command. Type 'help' for more information.")
 
 
 class Function:
-    """Class for terminal functionalities"""
+    """Class for terminal functionalities."""
     @classmethod
-    def wn_clear(cls):
-        """Clear the window"""
+    def wn_clear(cls) -> None:
+        """Clear the window."""
         if os.name == 'nt':
             os.system('cls')
         else:
             os.system('clear')
 
     @classmethod
-    def undo(cls, file_1, file_2):
-        """Reverts all the changes"""
-        shutil.copyfile(file_2, file_1)
+    def undo(cls, filename_1: str, filename_2: str) -> None:
+        """Reverts all the changes."""
+        shutil.copyfile(filename_2, filename_1)
 
     @classmethod
-    def rewrite(cls, file_1, file_2):
-        """Rewrites (copies) the contents of one file to the other"""
-        shutil.copyfile(file_1, file_2)
+    def rewrite(cls, filename_1: str, filename_2: str) -> None:
+        """Rewrites (copies) the contents of one file to the other."""
+        shutil.copyfile(filename_1, filename_2)
 
     @classmethod
-    def full_clear(cls, file):
-        """Removes all the tasks"""
-        file = open(file, 'w')
-        file.truncate(0)
-        file.write("Title,Deadline")
-        file.close()
+    def full_clear(cls, filename: str) -> None:
+        """Removes all the tasks."""
+        filename = open(filename, 'w')
+        filename.truncate(0)
+        filename.write("Title,Deadline")
+        filename.close()

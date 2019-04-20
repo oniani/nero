@@ -29,19 +29,22 @@ python3 nero.py
 ## Usage and functionality
 **Nero** has a very simple interface which is just a list of tasks with corresponding deadlines.
 
-This is the list of available functionalities:
-- `help` - shows a manual for the commands
-- `license` - shows the license of the app
-- `ls` - list all tasks
-- `ls --ttl` - list titles only
-- `ls --ddl` - list deadlines only
-- `add` - add a task
-- `rm` - remove a task by its index
-- `clear` - clear the terminal window
-- `h` - show command history for the current session
-- `q` - quit and save my edits
-- `!q` - quit and DO NOT save my edits
-- `FULL CLEAR` - erase all the tasks, this is the irreversible nuclear option
+Below is the list of available functionalities:
+
+Command      | Description
+-------------|-------------
+`help`       | shows a manual for the commands
+`license`    | shows the license of the app
+`ls`         | list all tasks
+`ls --ttl`   | list titles only
+`ls --ddl`   | list deadlines only
+`add`        | add a task
+`rm`         | remove a task by its index
+`clear`      | clear the terminal window
+`h`          | show command history for the current session
+`q`          | quit and save my edits
+`!q`         | quit and DO NOT save my edits
+`FULL CLEAR` | erase all the tasks, this is the irreversible nuclear option
 
 ## How does it work?
 **Nero** has a simple logic. Every task is stored in `CSV` file and the app either reads or writes to the file, depending on the command.

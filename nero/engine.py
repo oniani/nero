@@ -11,7 +11,8 @@ import csv
 
 class Core:
     """This class contains the core functionalities of the app."""
-    def __init__(self, filename):
+    def __init__(self, filename: str) -> None:
+        """Initializer magic method."""
         csv.register_dialect('nero', delimiter=',', lineterminator='\n')
         self._filename = filename
 
@@ -24,10 +25,12 @@ class Core:
 
         file.close()
 
-    def __len__(self):
+    def __len__(self) -> int:
+        """Return the length of the list for titles."""
         return len(self._titles)
 
-    def __getitem__(self, idx):
+    def __getitem__(self, idx) -> int:
+        """Return the item with the given index from the list for titles."""
         if idx > len(self._titles) - 1:
             raise IndexError("Index is out of bounds")
         elif idx < 0:
@@ -35,11 +38,13 @@ class Core:
 
         return self._titles[idx]
 
-    def __iter__(self):
+    def __iter__(self) -> None:
+        """The default '__iter__' iterates over the list for titles."""
         for i in range(len(self._titles)):
             yield self._titles[i]
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """The string representation for the class."""
         try:
             max_ttl_len = len(max(self._titles, key=len))
             max_ddl_len = len(max(self._deadlines, key=len))
@@ -61,15 +66,15 @@ class Core:
 
         return res
 
-    def get_titles(self):
+    def get_titles(self) -> list:
         """Return the list of task titles."""
         return self._titles
 
-    def get_deadlines(self):
+    def get_deadlines(self) -> list:
         """Return the list of task deadlines."""
         return self._deadlines
 
-    def add_task(self, title, deadline):
+    def add_task(self, title, deadline) -> None:
         """Add a new task."""
         file = open(self._filename, 'a')
         task_writer = csv.writer(file, 'nero')
@@ -80,7 +85,7 @@ class Core:
 
         file.close()
 
-    def remove_task(self, idx):
+    def remove_task(self, idx) -> None:
         """Remove a task by the index."""
         file = open(self._filename, 'w')
         task_writer = csv.writer(file, 'nero')
