@@ -1,5 +1,4 @@
 # Nero
-[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/oniani/Nero/blob/master/LICENSE/)
 ![python 3_+](https://img.shields.io/badge/Python-3+-green.svg)
 
 ## Few words about Nero
@@ -43,7 +42,7 @@ Command      | Description
 `clear`      | clear the terminal window
 `h`          | show command history for the current session
 `q`          | quit and save my edits
-`!q`         | quit and DO NOT save my edits
+`q!`         | quit and DO NOT save my edits
 `FULL CLEAR` | erase all the tasks, this is the irreversible nuclear option
 
 ## How does it work?
@@ -51,3 +50,6 @@ Command      | Description
 
 ## Dependencies
 **None** but **Python**
+
+## License
+[GNU General Public License v3.0](LICENSE)

@@ -2,7 +2,7 @@
 Nero
 
 Author: David Oniani
-Licensed under MIT
+Licensed under GNU General Public License v3.0
 """
 
 
@@ -82,26 +82,26 @@ def main():
         elif cmd == 'q':
             run = False
             interactions.Function.rewrite(file_1, file_2)
-            print("The application has stopped running. \
-                            Your changes have been saved.")
+            print("The application has stopped running."
+                  " Your changes have been saved.")
 
-        elif cmd == '!q':
+        elif cmd == 'q!':
             run = False
             interactions.Function.undo(file_1, file_2)
-            print("The application has stopped running. \
-                        Your changes have NOT been saved.")
+            print("The application has stopped running."
+                  " Your changes have NOT been saved.")
 
         elif cmd == 'FULL CLEAR':
-            confirm = input("This command will remove all of your tasks, \
-                                                        are you sure? Y/n\n")
+            confirm = input("This command will remove all of your tasks,"
+                            " are you sure? Y/n\n")
             if confirm == 'Y':
                 interactions.Function.full_clear(file_1)
                 interactions.Function.full_clear(file_2)
-                print("All the tasks have been deleted, \
-                            there is no going back now...")
+                print("All the tasks have been deleted,"
+                      "there is no going back now...")
                 run = False
             else:
-                print("Ugh... You almost wiped your tasks clean")
+                print("Ugh... You have almost wiped your tasks clean.")
 
         elif cmd == '':
             pass

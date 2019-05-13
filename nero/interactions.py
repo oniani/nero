@@ -2,7 +2,7 @@
 Interactions module
 
 David Oniani
-Licensed under MIT
+Licensed under GNU General Public License v3.0
 """
 
 
@@ -16,7 +16,7 @@ class Information:
     def info(cls) -> None:
         """Method for 'info' command."""
         print("Nero by David Oniani")
-        print("Licensed under MIT")
+        print("Licensed under GNU General Public License v3.0")
         print("Copyright (c) 2018 David Oniani")
         print("Type 'help' or 'license' for more information")
 
@@ -45,7 +45,7 @@ class InteractiveHelp:
         print("h" + "-->".rjust(15) + "   show command history for the"
               "current session")
         print("q" + "-->".rjust(15) + "   quit and" + " save my edits")
-        print("!q" + "-->".rjust(14) + "   quit and" + " DO NOT" +
+        print("q!" + "-->".rjust(14) + "   quit and" + " DO NOT" +
               " save my edits")
         print("FULL CLEAR" + "-->".rjust(6) + "   erase all the tasks, "
               "this is the irreversible nuclear option")

@@ -2,7 +2,7 @@
 Import statements for testing nero modules
 
 David Oniani
-Licensed under MIT
+Licensed under GNU General Public License v3.0
 """
 
 from nero.engine import Core
