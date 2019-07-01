@@ -11,13 +11,14 @@ import csv
 
 class Core:
     """This class contains the core functionalities of the app."""
+
     def __init__(self, filename: str) -> None:
         """Initializer magic method."""
-        csv.register_dialect('nero', delimiter=',', lineterminator='\n')
+        csv.register_dialect("nero", delimiter=",", lineterminator="\n")
         self._filename = filename
 
-        file = open(self._filename, 'r')
-        self._task_reader = csv.reader(file, 'nero')
+        file = open(self._filename, "r")
+        self._task_reader = csv.reader(file, "nero")
 
         self._titles = [task[0] for task in self._task_reader]
         file.seek(0)
@@ -51,18 +52,19 @@ class Core:
         except Exception:
             max_ttl_len = max_ddl_len = 0
 
-        res = "N   Title" + \
-            ' ' * (max_ttl_len - len("Title") + 13) + "Deadline"
+        res = (
+            "N   Title" + " " * (max_ttl_len - len("Title") + 13) + "Deadline"
+        )
 
         if len(self) != 0:
-            res += '\n' + '=' * (max_ttl_len + max_ddl_len + 17) + '\n'
+            res += "\n" + "=" * (max_ttl_len + max_ddl_len + 17) + "\n"
         else:
-            res += '\n' + '=' * 25 + '\n'
+            res += "\n" + "=" * 25 + "\n"
 
         for idx, task in enumerate(zip(self._titles[1:], self._deadlines[1:])):
-            res += str(idx) + '.' + ''.rjust(3 - len(str(idx)))
-            res += ''.join(word.ljust(max_ttl_len + 13) for word in task)
-            res += '\n'
+            res += str(idx) + "." + "".rjust(3 - len(str(idx)))
+            res += "".join(word.ljust(max_ttl_len + 13) for word in task)
+            res += "\n"
 
         return res
 
@@ -76,8 +78,8 @@ class Core:
 
     def add_task(self, title, deadline) -> None:
         """Add a new task."""
-        file = open(self._filename, 'a')
-        task_writer = csv.writer(file, 'nero')
+        file = open(self._filename, "a")
+        task_writer = csv.writer(file, "nero")
 
         task_writer.writerow([title, deadline])
         self._titles.append(title)
@@ -87,11 +89,11 @@ class Core:
 
     def remove_task(self, idx) -> None:
         """Remove a task by the index."""
-        file = open(self._filename, 'w')
-        task_writer = csv.writer(file, 'nero')
+        file = open(self._filename, "w")
+        task_writer = csv.writer(file, "nero")
 
-        del self._titles[idx+1]
-        del self._deadlines[idx+1]
+        del self._titles[idx + 1]
+        del self._deadlines[idx + 1]
 
         task_writer.writerows(zip(self._titles, self._deadlines))
 

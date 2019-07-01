@@ -9,4 +9,4 @@ from nero.engine import Core
 from nero.interactions import Information, InteractiveHelp, Function
 
 
-__all__ = ['Core', 'Information', 'InteractiveHelp', 'Function']
+__all__ = ["Core", "Information", "InteractiveHelp", "Function"]
