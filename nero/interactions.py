@@ -17,7 +17,7 @@ class Information:
     def info(cls) -> None:
         """Method for 'info' command."""
         print("Nero by David Oniani")
-        print("Licensed under GNU General Public License v3.0")
+        print("Licensed under MIT License")
         print("Copyright (c) 2018 David Oniani")
         print("Type 'help' or 'license' for more information")
 

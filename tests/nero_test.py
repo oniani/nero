@@ -2,7 +2,7 @@
 Testing module
 
 David Oniani
-Licensed under GNU General Public License v3.0
+Licensed under MIT License.
 """
 
 
@@ -205,7 +205,7 @@ def test_Information(capfd):
     out, err = capfd.readouterr()
     assert (
         out == "Nero by David Oniani\n"
-        "Licensed under GNU General Public License v3.0\n"
+        "Licensed under MIT License\n"
         "Copyright (c) 2018 David Oniani\n"
         "Type 'help' or 'license' for more information\n"
     )
