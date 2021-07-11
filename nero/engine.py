@@ -52,9 +52,7 @@ class Core:
         except Exception:
             max_ttl_len = max_ddl_len = 0
 
-        res = (
-            "N   Title" + " " * (max_ttl_len - len("Title") + 13) + "Deadline"
-        )
+        res = "N   Title" + " " * (max_ttl_len - len("Title") + 13) + "Deadline"
 
         if len(self) != 0:
             res += "\n" + "=" * (max_ttl_len + max_ddl_len + 17) + "\n"

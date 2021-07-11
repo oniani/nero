@@ -35,9 +35,7 @@ class InteractiveHelp:
     @classmethod
     def help(cls) -> None:
         """Method for the 'help' command."""
-        print(
-            "help" + "-->".rjust(12) + "   show the manual" "for the commands"
-        )
+        print("help" + "-->".rjust(12) + "   show the manual" "for the commands")
         print("license" + "-->".rjust(9) + "   show the license of the app")
         print("ls" + "-->".rjust(14) + "   list all tasks")
         print("ls --ttl" + "-->".rjust(8) + "   list titles only")
@@ -45,18 +43,9 @@ class InteractiveHelp:
         print("add" + "-->".rjust(13) + "   add a task")
         print("rm" + "-->".rjust(14) + "   remove a task by its index")
         print("clear" + "-->".rjust(11) + "   clear the terminal window")
-        print(
-            "h" + "-->".rjust(15) + "   show command history for the"
-            "current session"
-        )
+        print("h" + "-->".rjust(15) + "   show command history for the" "current session")
         print("q" + "-->".rjust(15) + "   quit and" + " save my edits")
-        print(
-            "q!"
-            + "-->".rjust(14)
-            + "   quit and"
-            + " DO NOT"
-            + " save my edits"
-        )
+        print("q!" + "-->".rjust(14) + "   quit and" + " DO NOT" + " save my edits")
         print(
             "FULL CLEAR" + "-->".rjust(6) + "   erase all the tasks, "
             "this is the irreversible nuclear option"
